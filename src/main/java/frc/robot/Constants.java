@@ -1,6 +1,7 @@
 package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
+import org.photonvision.PhotonCamera;
 
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
@@ -138,11 +139,19 @@ public final class Constants {
     
         public static final double kPXController = 1;
         public static final double kPYController = 1;
+        public static final double kPXandYControllers = 1;
         public static final double kPThetaController = 1;
     
         /* Constraint for the motion profilied robot angle controller */
         public static final TrapezoidProfile.Constraints kThetaControllerConstraints =
             new TrapezoidProfile.Constraints(
                 kMaxAngularSpeedRadiansPerSecond, kMaxAngularSpeedRadiansPerSecondSquared);
+    }
+
+    public static final class VisionConstants {
+        public static final double kCameraHeight = 2.75; // Camera height in feet
+        public static final double kTargetHeight = 8.666667; // Target height in feet
+        public static final double kCameraToTarget = kTargetHeight - kCameraHeight; // height difference between the target and camera
+        public static final double kCameraMountAngle = 39.5; // Angle in degrees from the horizon
     }
 }
