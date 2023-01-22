@@ -1,7 +1,6 @@
 package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
-import org.photonvision.PhotonCamera;
 
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Rotation3d;
@@ -16,8 +15,6 @@ import frc.lib.util.SwerveModuleConstants;
 
 public final class Constants {
     public static final double stickDeadband = 0.1;
-
-    public static final Transform3d CAMERA_TO_ROBOT = new Transform3d(new Translation3d(0, 0, 0), new Rotation3d());
 
     public static final class Swerve {
         public static final int pigeonID = 13;
@@ -154,9 +151,11 @@ public final class Constants {
     }
 
     public static final class VisionConstants {
-        public static final double kCameraHeight = 2.75; // Camera height in feet
-        public static final double kTargetHeight = 8.666667; // Target height in feet
-        public static final double kCameraToTarget = kTargetHeight - kCameraHeight; // height difference between the target and camera
-        public static final double kCameraMountAngle = 39.5; // Angle in degrees from the horizon
+        // Cam mounted facing forward, half a meter forward of center, half a meter up from center.
+        public static final Transform3d robotToCam = new Transform3d(
+                        new Translation3d(0.5, 0.0, 0.5),
+                        new Rotation3d(0, 0, 0));
+
+        public static final String kCameraName = "camera";
     }
 }
