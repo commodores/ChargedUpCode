@@ -118,9 +118,9 @@ public class Swerve extends SubsystemBase {
         if (result.isPresent()) {
             EstimatedRobotPose camPose = result.get();
             poseEstimator.addVisionMeasurement(camPose.estimatedPose.toPose2d(), camPose.timestampSeconds);
-            field.getObject("Estimated Position").setPose(camPose.estimatedPose.toPose2d());
+            field.getObject("Estimated Vision Position").setPose(camPose.estimatedPose.toPose2d());
         } else {
-            field.getObject("Estimated Position").setPose(new Pose2d(-100, -100, new Rotation2d()));
+            field.getObject("Estimated Vision Position").setPose(new Pose2d(-100, -100, new Rotation2d()));
         }
 
         field.getObject("Actual Pos").setPose(getPose());
@@ -168,8 +168,6 @@ public class Swerve extends SubsystemBase {
     public void periodic(){
         //swerveOdometry.update(getYaw(), getModulePositions());
         updateOdometry();
-        
-        
         
         for(SwerveModule mod : mSwerveMods){
             SmartDashboard.putNumber("Mod " + mod.moduleNumber + " Cancoder", mod.getCanCoder().getDegrees());
