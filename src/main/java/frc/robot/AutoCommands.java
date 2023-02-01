@@ -38,12 +38,26 @@ public class AutoCommands {
             new Nothing()
         ));
         
-        //Barrel Racing/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        List<PathPlannerTrajectory> NewPath = PathPlanner.loadPathGroup("NewPath", new PathConstraints(4, 3));
-        autos.put("NewPath", new SequentialCommandGroup(
-            getCommand(NewPath)
+        /////Charge Auto//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        List<PathPlannerTrajectory> Charge = PathPlanner.loadPathGroup("Charge Auto", new PathConstraints(4, 3));
+        autos.put("Charge Auto", new SequentialCommandGroup(
+            getCommand(Charge)
         ));
-        eventMap.put("BarrelMarker1", new PrintCommand("You are Barrel Racing!!!"));
+
+         //Out of Com and Charge Auto/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+         List<PathPlannerTrajectory> outAndCharge = PathPlanner.loadPathGroup("Out And Charge", new PathConstraints(4, 3));
+         autos.put("outAndCharge", new SequentialCommandGroup(
+             getCommand(outAndCharge)
+         ));
+        
+         //Out of Com Center/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+         List<PathPlannerTrajectory> outAndComCenter = PathPlanner.loadPathGroup("Out And Com Center", new PathConstraints(4, 3));
+         autos.put("Out And Com Center", new SequentialCommandGroup(
+             getCommand(outAndComCenter)
+         ));
+
+
+       // eventMap.put("BarrelMarker1", new PrintCommand("You are Barrel Racing!!!"));
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
