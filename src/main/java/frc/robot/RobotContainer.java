@@ -53,7 +53,8 @@ public class RobotContainer {
     /* Subsystems */
     private final Swerve s_Swerve = new Swerve();
     private final Intake m_Intake = new Intake();
-    private final Armevator m_Armevator = new Armevator();
+    private final Arm m_Arm = new Arm();
+    private final Elevator m_Elevator = new Elevator();
    
     private final SendableChooser<SequentialCommandGroup> autoChooser;
     private final AutoCommands autos;

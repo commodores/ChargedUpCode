@@ -158,4 +158,20 @@ public final class Constants {
 
         public static final String kCameraName = "camera";
     }
+
+    public static final class ArmConstants {
+        public static final int kArmSolenoidPort;
+    }
+
+    public static final class ElevatorConstants {
+        public static final int kElevatorSolenoidPort;
+    }
+
+    public static final class IntakeConstants {
+        public static final int kIntakeSolenoidPort;
+    }
+
+    public static final class CameraConstants {
+        public static final int kCameraSolenoidPort;
+    }
 }
