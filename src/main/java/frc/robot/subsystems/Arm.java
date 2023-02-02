@@ -15,6 +15,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 public class Arm extends SubsystemBase {
 
   private final CANSparkMax arm;
+  
   /** Creates a new Arm. */
   public Arm() {
     arm = new CANSparkMax(3, MotorType.kBrushless);

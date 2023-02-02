@@ -12,9 +12,10 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 
 public class Elevator extends SubsystemBase {
-  /** Creates a new Elevator. */
+  
   private final CANSparkMax elevator;
   
+  /** Creates a new Elevator. */
   public Elevator() {
     elevator = new CANSparkMax(1, MotorType.kBrushless);
     elevator.setIdleMode(IdleMode.kBrake);
