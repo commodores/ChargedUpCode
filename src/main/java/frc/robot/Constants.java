@@ -160,15 +160,16 @@ public final class Constants {
     }
 
     public static final class ArmConstants {
-        
+        public static final int armMotorID = 13;
     }
 
     public static final class ElevatorConstants {
-        
+        public static final int elevatorMotorID = 14;
+        public static final int elevatorSensorID = 16;
     }
 
     public static final class IntakeConstants {
-        
+        public static final int intakeMotorID = 15;
     }
 
 }

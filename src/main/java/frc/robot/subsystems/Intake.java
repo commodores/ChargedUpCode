@@ -4,11 +4,14 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.I2C;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import com.ctre.phoenix.motorcontrol.NeutralMode;
-import com.ctre.phoenix.motorcontrol.WPI_AutoFeedEnable;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+import frc.robot.Constants;
+import edu.wpi.first.wpilibj.util.Color;
+
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.ColorSensorV3;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
@@ -18,14 +21,20 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 public class Intake extends SubsystemBase {
   
 
-  private final CANSparkMax intake;
+  private final CANSparkMax intakeMotor;
+  private final I2C.Port i2cPort = I2C.Port.kOnboard;
+  private final ColorSensorV3 colorSensor;
   
 
   /** Creates a new Intake. */
   public Intake() {
 
-    intake = new CANSparkMax(0, MotorType.kBrushless);
-    intake.setIdleMode(IdleMode.kBrake);
+    intakeMotor = new CANSparkMax(Constants.IntakeConstants.intakeMotorID, MotorType.kBrushless);
+    intakeMotor.restoreFactoryDefaults();
+    intakeMotor.setSmartCurrentLimit(20);
+    intakeMotor.setIdleMode(IdleMode.kBrake);
+
+    colorSensor = new ColorSensorV3(i2cPort);
 
 
 
@@ -35,5 +44,9 @@ public class Intake extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    Color detectedColor = colorSensor.getColor();
+    SmartDashboard.putNumber("Red", detectedColor.red);
+    SmartDashboard.putNumber("Green", detectedColor.green);
+    SmartDashboard.putNumber("Blue", detectedColor.blue);
   }
 }

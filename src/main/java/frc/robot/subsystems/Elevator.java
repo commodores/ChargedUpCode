@@ -4,8 +4,11 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import com.ctre.phoenix.motorcontrol.NeutralMode;
+import frc.robot.Constants;
+
+import com.playingwithfusion.TimeOfFlight;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -13,12 +16,17 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 public class Elevator extends SubsystemBase {
   
-  private final CANSparkMax elevator;
+  private final CANSparkMax elevatorMotor;
+  private final TimeOfFlight elevatorSensor;
   
   /** Creates a new Elevator. */
   public Elevator() {
-    elevator = new CANSparkMax(1, MotorType.kBrushless);
-    elevator.setIdleMode(IdleMode.kBrake);
+    elevatorMotor = new CANSparkMax(Constants.ElevatorConstants.elevatorMotorID, MotorType.kBrushless);
+    elevatorMotor.restoreFactoryDefaults();
+    elevatorMotor.setSmartCurrentLimit(20);
+    elevatorMotor.setIdleMode(IdleMode.kBrake);
+
+    elevatorSensor = new TimeOfFlight(Constants.ElevatorConstants.elevatorSensorID);
 
 
 
@@ -27,5 +35,6 @@ public class Elevator extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    SmartDashboard.putNumber("Elevator Height: ", elevatorSensor.getRange());
   }
 }
