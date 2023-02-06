@@ -35,11 +35,11 @@ public class RobotContainer {
 
     /* Driver Buttons Controller 1 */
     private final JoystickButton zeroGyro = new JoystickButton(driver, XboxController.Button.kY.value);
-    private final JoystickButton robotCentric = new JoystickButton(driver, XboxController.Button.kA.value);
+    private final JoystickButton robotCentric = new JoystickButton(driver, XboxController.Button.kX.value);
     private final JoystickButton intake  = new JoystickButton(driver, XboxController.Button.kRightBumper.value);
     private final JoystickButton release = new JoystickButton(driver, XboxController.Button.kLeftBumper.value);
-    private final JoystickButton lowerElevator = new JoystickButton(driver, XboxController.Axis.kRightTrigger.value);
-    private final JoystickButton raiseElevator = new JoystickButton(driver, XboxController.Axis.kLeftTrigger.value);
+    private final JoystickButton lowerElevator = new JoystickButton(driver, XboxController.Button.kA.value);
+    private final JoystickButton raiseElevator = new JoystickButton(driver, XboxController.Button.kB.value);
 
 
      /* Driver Buttons Controller 2 */
@@ -97,6 +97,16 @@ public class RobotContainer {
     private void configureButtonBindings() {
         /* Driver Buttons */
         zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroGyro()));
+
+        intake.onTrue(new InstantCommand(() -> m_Intake.runIntake(-1)));
+        intake.onFalse(new InstantCommand(() -> m_Intake.runIntake(0)));
+        release.onTrue(new InstantCommand(() -> m_Intake.runIntake(1)));
+        release.onFalse(new InstantCommand(() -> m_Intake.runIntake(0)));
+
+        raiseElevator.onTrue(new InstantCommand(() -> m_Elevator.runElevator(-.5)));
+        raiseElevator.onFalse(new InstantCommand(() -> m_Elevator.runElevator(0)));
+        lowerElevator.onTrue(new InstantCommand(() -> m_Elevator.runElevator(.5)));
+        lowerElevator.onFalse(new InstantCommand(() -> m_Elevator.runElevator(0)));
 
         
 

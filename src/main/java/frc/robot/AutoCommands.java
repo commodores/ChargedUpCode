@@ -39,21 +39,21 @@ public class AutoCommands {
         ));
         
         /////Charge Auto//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        List<PathPlannerTrajectory> Charge = PathPlanner.loadPathGroup("Charge Auto", new PathConstraints(4, 3));
+        List<PathPlannerTrajectory> Charge = PathPlanner.loadPathGroup("Charge", new PathConstraints(4, 3));
         autos.put("Charge Auto", new SequentialCommandGroup(
             getCommand(Charge)
         ));
 
          //Out of Com and Charge Auto/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-         List<PathPlannerTrajectory> outAndCharge = PathPlanner.loadPathGroup("Out And Charge", new PathConstraints(4, 3));
-         autos.put("outAndCharge", new SequentialCommandGroup(
+         List<PathPlannerTrajectory> outAndCharge = PathPlanner.loadPathGroup("outAndCharge", new PathConstraints(4, 3));
+         autos.put("Out And Charge", new SequentialCommandGroup(
              getCommand(outAndCharge)
          ));
         
          //Out of Com Center/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-         List<PathPlannerTrajectory> outAndComCenter = PathPlanner.loadPathGroup("Out And Com Center", new PathConstraints(4, 3));
+         List<PathPlannerTrajectory> outOfComCenter = PathPlanner.loadPathGroup("outOfComCenter", new PathConstraints(4, 3));
          autos.put("Out And Com Center", new SequentialCommandGroup(
-             getCommand(outAndComCenter)
+             getCommand(outOfComCenter)
          ));
 
 

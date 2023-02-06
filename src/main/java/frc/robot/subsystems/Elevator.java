@@ -32,6 +32,10 @@ public class Elevator extends SubsystemBase {
 
   }
 
+  public void runElevator(double speed){
+    elevatorMotor.set(speed);
+}
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
