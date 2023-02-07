@@ -165,7 +165,7 @@ public final class Constants {
 
     public static final class ElevatorConstants {
         public static final int elevatorMotorID = 14;
-        public static final int elevatorSensorID = 16;
+        public static final int elevatorSensorID = 0;
     }
 
     public static final class IntakeConstants {
