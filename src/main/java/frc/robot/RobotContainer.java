@@ -45,8 +45,8 @@ public class RobotContainer {
 
 
      /* Driver Buttons Controller 2 */
-    private final JoystickButton raiseArm = new JoystickButton(driverTwo, XboxController.Axis.kLeftTrigger.value);
-    private final JoystickButton lowerArm = new JoystickButton(driverTwo, XboxController.Axis.kRightTrigger.value);
+    private final JoystickButton raiseArm = new JoystickButton(driverTwo, XboxController.Button.kRightBumper.value);
+    private final JoystickButton lowerArm = new JoystickButton(driverTwo, XboxController.Button.kLeftBumper.value);
     private final JoystickButton restpose = new JoystickButton(driverTwo, XboxController.Button.kB.value);
     private final JoystickButton armHigh = new JoystickButton(driverTwo, XboxController.Button.kY.value);
     private final JoystickButton armMid = new JoystickButton(driverTwo, XboxController.Button.kX.value);
@@ -61,6 +61,10 @@ public class RobotContainer {
    
     private final SendableChooser<SequentialCommandGroup> autoChooser;
     private final AutoCommands autos;
+
+    
+
+    
 
 
     /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -106,14 +110,14 @@ public class RobotContainer {
         release.onTrue(new InstantCommand(() -> m_Intake.runIntake(.4)));
         release.onFalse(new InstantCommand(() -> m_Intake.runIntake(0)));
 
-        //raiseElevator.onTrue(new InstantCommand(() -> m_Elevator.runElevator(.5)));
-        //raiseElevator.onFalse(new InstantCommand(() -> m_Elevator.runElevator(0)));
-       // lowerElevator.onTrue(new InstantCommand(() -> m_Elevator.runElevator(-.5)));
-        //lowerElevator.onFalse(new InstantCommand(() -> m_Elevator.runElevator(0)));
+        raiseElevator.onTrue(new InstantCommand(() -> m_Elevator.runElevator(.5)));
+        raiseElevator.onFalse(new InstantCommand(() -> m_Elevator.runElevator(0)));
+        lowerElevator.onTrue(new InstantCommand(() -> m_Elevator.runElevator(-.5)));
+        lowerElevator.onFalse(new InstantCommand(() -> m_Elevator.runElevator(0)));
 
-       // elevatorTest.onTrue(new InstantCommand(() -> m_Elevator.setGoal(323)));
+        elevatorTest.onTrue(Commands.runOnce(() -> {m_Elevator.setGoal(323); m_Elevator.enable(); },m_Elevator));
 
-       elevatorTest.onTrue(Commands.runOnce(() -> {m_Elevator.setGoal(323); m_Elevator.enable(); },m_Elevator));
+        lowerArm.onTrue(new HighArm(m_Arm));
     
     
     }
