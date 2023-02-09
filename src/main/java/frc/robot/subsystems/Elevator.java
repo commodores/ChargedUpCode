@@ -36,6 +36,21 @@ public class Elevator extends SubsystemBase {
     elevatorMotor.set(speed);
 }
 
+  public void elevatorToPosition(double position){
+    double currentPosition = getElevatorPosition();
+    double Kp = .01;
+    double Kminoutput = -1;
+    double Kmaxoutput = 1;
+    double error = position - getElevatorPosition();
+    double output = Kp * error;
+    double final_output = Math.min(Math.max(output, Kminoutput), Kmaxoutput);
+    elevatorMotor.set(final_output);
+  }
+
+  public double getElevatorPosition(){
+    return elevatorSensor.getRange();
+  }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run

@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -40,6 +41,7 @@ public class RobotContainer {
     private final JoystickButton release = new JoystickButton(driver, XboxController.Button.kLeftBumper.value);
     private final JoystickButton lowerElevator = new JoystickButton(driver, XboxController.Button.kA.value);
     private final JoystickButton raiseElevator = new JoystickButton(driver, XboxController.Button.kB.value);
+    private final JoystickButton elevatorTest = new JoystickButton(driver,XboxController.Button.kBack.value);
 
 
      /* Driver Buttons Controller 2 */
@@ -54,7 +56,8 @@ public class RobotContainer {
     private final Swerve s_Swerve = new Swerve();
     private final Intake m_Intake = new Intake();
     private final Arm m_Arm = new Arm();
-    private final Elevator m_Elevator = new Elevator();
+   // private final Elevator m_Elevator = new Elevator();
+    public final SmartElevator m_Elevator = new SmartElevator();
    
     private final SendableChooser<SequentialCommandGroup> autoChooser;
     private final AutoCommands autos;
@@ -100,16 +103,19 @@ public class RobotContainer {
 
         intake.onTrue(new InstantCommand(() -> m_Intake.runIntake(-1)));
         intake.onFalse(new InstantCommand(() -> m_Intake.runIntake(0)));
-        release.onTrue(new InstantCommand(() -> m_Intake.runIntake(1)));
+        release.onTrue(new InstantCommand(() -> m_Intake.runIntake(.4)));
         release.onFalse(new InstantCommand(() -> m_Intake.runIntake(0)));
 
-        raiseElevator.onTrue(new InstantCommand(() -> m_Elevator.runElevator(-.5)));
-        raiseElevator.onFalse(new InstantCommand(() -> m_Elevator.runElevator(0)));
-        lowerElevator.onTrue(new InstantCommand(() -> m_Elevator.runElevator(.5)));
-        lowerElevator.onFalse(new InstantCommand(() -> m_Elevator.runElevator(0)));
+        //raiseElevator.onTrue(new InstantCommand(() -> m_Elevator.runElevator(.5)));
+        //raiseElevator.onFalse(new InstantCommand(() -> m_Elevator.runElevator(0)));
+       // lowerElevator.onTrue(new InstantCommand(() -> m_Elevator.runElevator(-.5)));
+        //lowerElevator.onFalse(new InstantCommand(() -> m_Elevator.runElevator(0)));
 
-        
+       // elevatorTest.onTrue(new InstantCommand(() -> m_Elevator.setGoal(323)));
 
+       elevatorTest.onTrue(Commands.runOnce(() -> {m_Elevator.setGoal(323); m_Elevator.enable(); },m_Elevator));
+    
+    
     }
 
     /**

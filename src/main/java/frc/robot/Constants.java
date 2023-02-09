@@ -166,6 +166,17 @@ public final class Constants {
     public static final class ElevatorConstants {
         public static final int elevatorMotorID = 14;
         public static final int elevatorSensorID = 0;
+        public static final double kP = .1;
+        public static final double kI = 0;
+        public static final double kD = 0;
+        public static final double MAX_VEL = 0;
+        public static final double MAX_ACC = 0;
+        public static final double kS = 0.1;
+        public static final double kG = 0.1;
+        public static final double kV = 1;
+        public static final double kA = 0.1;
+        public static final double MAX_HEIGHT = 1135;
+        public static final double MIN_HEIGHT = 0;
     }
 
     public static final class IntakeConstants {
