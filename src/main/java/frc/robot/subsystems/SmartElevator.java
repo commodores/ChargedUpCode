@@ -61,5 +61,13 @@ public class SmartElevator extends ProfiledPIDSubsystem {
       this.feedforward = feedforward;
   }
 
+  public void runElevator(double speed){
+    elevatorMotor.set(speed);
+  }
+
+  public double getElevatorPosition(){
+    return elevatorSensor.getRange();
+  }
+
   
 }
