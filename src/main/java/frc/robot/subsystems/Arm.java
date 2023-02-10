@@ -76,21 +76,21 @@ public class Arm extends SubsystemBase {
     armPIDController.setSmartMotionAllowedClosedLoopError(allowedErr, smartMotionSlot);
 
     // display PID coefficients on SmartDashboard
-    SmartDashboard.putNumber("P Gain", kP);
-    SmartDashboard.putNumber("I Gain", kI);
-    SmartDashboard.putNumber("D Gain", kD);
-    SmartDashboard.putNumber("I Zone", kIz);
-    SmartDashboard.putNumber("Feed Forward", kFF);
-    SmartDashboard.putNumber("Max Output", kMaxOutput);
-    SmartDashboard.putNumber("Min Output", kMinOutput);
+    SmartDashboard.putNumber("Arm P Gain", kP);
+    SmartDashboard.putNumber("Arm I Gain", kI);
+    SmartDashboard.putNumber("Arm D Gain", kD);
+    SmartDashboard.putNumber("Arm I Zone", kIz);
+    SmartDashboard.putNumber("Arm Feed Forward", kFF);
+    SmartDashboard.putNumber("Arm Max Output", kMaxOutput);
+    SmartDashboard.putNumber("Arm Min Output", kMinOutput);
 
     // display Smart Motion coefficients
-    SmartDashboard.putNumber("Max Velocity", maxVel);
-    SmartDashboard.putNumber("Min Velocity", minVel);
-    SmartDashboard.putNumber("Max Acceleration", maxAcc);
-    SmartDashboard.putNumber("Allowed Closed Loop Error", allowedErr);
-    SmartDashboard.putNumber("Set Position", 0);
-    SmartDashboard.putNumber("Set Velocity", 0);
+    SmartDashboard.putNumber("Arm Max Velocity", maxVel);
+    SmartDashboard.putNumber("Arm Min Velocity", minVel);
+    SmartDashboard.putNumber("Arm Max Acceleration", maxAcc);
+    SmartDashboard.putNumber("Arm Allowed Closed Loop Error", allowedErr);
+    SmartDashboard.putNumber("Arm Set Position", 0);
+    SmartDashboard.putNumber("Arm Set Velocity", 0);
   }
 
   public void armToPosition(double setPoint){
@@ -102,17 +102,17 @@ public class Arm extends SubsystemBase {
     
     // This method will be called once per scheduler run
     // read PID coefficients from SmartDashboard
-    double p = SmartDashboard.getNumber("P Gain", 0);
-    double i = SmartDashboard.getNumber("I Gain", 0);
-    double d = SmartDashboard.getNumber("D Gain", 0);
-    double iz = SmartDashboard.getNumber("I Zone", 0);
-    double ff = SmartDashboard.getNumber("Feed Forward", 0);
-    double max = SmartDashboard.getNumber("Max Output", 0);
-    double min = SmartDashboard.getNumber("Min Output", 0);
-    double maxV = SmartDashboard.getNumber("Max Velocity", 0);
-    double minV = SmartDashboard.getNumber("Min Velocity", 0);
-    double maxA = SmartDashboard.getNumber("Max Acceleration", 0);
-    double allE = SmartDashboard.getNumber("Allowed Closed Loop Error", 0);
+    double p = SmartDashboard.getNumber("Arm Set P Gain", 0);
+    double i = SmartDashboard.getNumber("Arm Set I Gain", 0);
+    double d = SmartDashboard.getNumber("Arm Set D Gain", 0);
+    double iz = SmartDashboard.getNumber("Arm Set I Zone", 0);
+    double ff = SmartDashboard.getNumber("Arm Set Feed Forward", 0);
+    double max = SmartDashboard.getNumber("Arm Set Max Output", 0);
+    double min = SmartDashboard.getNumber("Arm Set Min Output", 0);
+    double maxV = SmartDashboard.getNumber("Arm Set Max Velocity", 0);
+    double minV = SmartDashboard.getNumber("Arm Set Min Velocity", 0);
+    double maxA = SmartDashboard.getNumber("Arm Set Max Acceleration", 0);
+    double allE = SmartDashboard.getNumber("Arm Set Allowed Closed Loop Error", 0);
 
     // if PID coefficients on SmartDashboard have changed, write new values to controller
     if((p != kP)) { armPIDController.setP(p); kP = p; }
