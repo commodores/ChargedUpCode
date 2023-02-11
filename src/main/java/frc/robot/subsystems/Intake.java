@@ -25,7 +25,7 @@ public class Intake extends SubsystemBase {
 
     intakeMotor = new CANSparkMax(Constants.IntakeConstants.intakeMotorID, MotorType.kBrushless);
     intakeMotor.restoreFactoryDefaults();
-    intakeMotor.setSmartCurrentLimit(20);
+    intakeMotor.setSmartCurrentLimit(30);
     intakeMotor.setIdleMode(IdleMode.kBrake);
     
   }

@@ -94,23 +94,6 @@ public class Arm extends SubsystemBase {
     return armEncoder.getPosition();
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   @Override
   public void periodic() {
     SmartDashboard.putNumber("Arm Current", getOutputCurrent());
@@ -120,6 +103,18 @@ public class Arm extends SubsystemBase {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+    
 
 
 

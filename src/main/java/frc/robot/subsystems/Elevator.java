@@ -10,7 +10,6 @@ import frc.robot.Constants;
 
 import com.playingwithfusion.TimeOfFlight;
 import com.revrobotics.CANSparkMax;
-import com.revrobotics.MotorFeedbackSensor;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkMaxPIDController;
 import com.revrobotics.CANSparkMax.IdleMode;
@@ -101,22 +100,6 @@ public class Elevator extends SubsystemBase {
     return elevatorEncoder.getPosition();
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   @Override
   public void periodic() {
 
@@ -127,6 +110,19 @@ public class Elevator extends SubsystemBase {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
 
 

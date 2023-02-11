@@ -280,22 +280,9 @@
         "vgap": 16.0,
         "titleType": 1,
         "tiles": {
-          "0,0": {
+          "2,1": {
             "size": [
-              2,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Arm Allowed Closed Loop Error",
-              "_title": "/SmartDashboard/Arm Allowed Closed Loop Error",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "4,2": {
-            "size": [
-              2,
+              1,
               1
             ],
             "content": {
@@ -306,9 +293,9 @@
               "_showGlyph": false
             }
           },
-          "6,2": {
+          "3,1": {
             "size": [
-              2,
+              1,
               1
             ],
             "content": {
@@ -319,9 +306,9 @@
               "_showGlyph": false
             }
           },
-          "2,2": {
+          "1,1": {
             "size": [
-              2,
+              1,
               1
             ],
             "content": {
@@ -332,61 +319,9 @@
               "_showGlyph": false
             }
           },
-          "2,3": {
-            "size": [
-              2,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Arm I Zone",
-              "_title": "/SmartDashboard/Arm I Zone",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
           "0,1": {
             "size": [
-              2,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Arm Max Acceleration",
-              "_title": "/SmartDashboard/Arm Max Acceleration",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "2,1": {
-            "size": [
-              2,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Arm Max Output",
-              "_title": "/SmartDashboard/Arm Max Output",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "4,1": {
-            "size": [
-              2,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Arm Max Velocity",
-              "_title": "/SmartDashboard/Arm Max Velocity",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "0,2": {
-            "size": [
-              2,
+              1,
               1
             ],
             "content": {
@@ -397,28 +332,15 @@
               "_showGlyph": false
             }
           },
-          "0,4": {
+          "0,0": {
             "size": [
               2,
               1
             ],
             "content": {
               "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Arm Set Position",
-              "_title": "/SmartDashboard/Arm Set Position",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "3,4": {
-            "size": [
-              2,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Arm Set Velocity",
-              "_title": "/SmartDashboard/Arm Set Velocity",
+              "_source0": "network_table:///SmartDashboard/Arm Current",
+              "_title": "/SmartDashboard/Arm Current",
               "_glyph": 148,
               "_showGlyph": false
             }
@@ -430,21 +352,8 @@
             ],
             "content": {
               "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Arm Min Output",
-              "_title": "/SmartDashboard/Arm Min Output",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "4,0": {
-            "size": [
-              2,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Arm Min Velocity",
-              "_title": "/SmartDashboard/Arm Min Velocity",
+              "_source0": "network_table:///SmartDashboard/Arm Position",
+              "_title": "/SmartDashboard/Arm Position",
               "_glyph": 148,
               "_showGlyph": false
             }
@@ -461,8 +370,87 @@
         "showGrid": true,
         "hgap": 16.0,
         "vgap": 16.0,
-        "titleType": 0,
-        "tiles": {}
+        "titleType": 1,
+        "tiles": {
+          "2,1": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Elevator D Gain",
+              "_title": "/SmartDashboard/Elevator D Gain",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "0,0": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Elevator Current",
+              "_title": "/SmartDashboard/Elevator Current",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "1,1": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Elevator I Gain",
+              "_title": "/SmartDashboard/Elevator I Gain",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "0,1": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Elevator P Gain",
+              "_title": "/SmartDashboard/Elevator P Gain",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "2,0": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Elevator Position",
+              "_title": "/SmartDashboard/Elevator Position",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "3,1": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Elevator Feed Forward",
+              "_title": "/SmartDashboard/Elevator Feed Forward",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          }
+        }
       }
     },
     {
@@ -522,7 +510,7 @@
               "Game/Game": "A2023_Charged_Up",
               "Visuals/Robot Icon Size": 50.0,
               "Visuals/Show Outside Circles": false,
-              "Colors/Estimated Vision Position": "#FFFF00FF",
+              "Colors/Estimated Vision Position": "#FFFFFFFF",
               "Colors/Actual Pos": "#FFFFFFFF"
             }
           }
