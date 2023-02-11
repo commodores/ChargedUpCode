@@ -5,16 +5,22 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.Arm;
 
 public class MidArm extends CommandBase {
+  private final Arm m_Arm;
   /** Creates a new MidArm. */
-  public MidArm() {
+  public MidArm(Arm subsystem) {
     // Use addRequirements() here to declare subsystem dependencies.
+    m_Arm = subsystem;
+    addRequirements(m_Arm);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    m_Arm.setPosition(-37);
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
