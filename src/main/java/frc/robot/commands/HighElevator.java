@@ -5,12 +5,12 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.SmartElevator;
+import frc.robot.subsystems.Elevator;
 
 public class HighElevator extends CommandBase {
-  private final SmartElevator m_Elevator;
+  private final Elevator m_Elevator;
   /** Creates a new HighElevator. */
-  public HighElevator(SmartElevator subsystem) {
+  public HighElevator(Elevator subsystem) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_Elevator = subsystem;
     addRequirements(m_Elevator);
@@ -23,8 +23,7 @@ public class HighElevator extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_Elevator.setGoal(323);
-    m_Elevator.enable();
+    m_Elevator.setPosition(50);
   }
 
   // Called once the command ends or is interrupted.

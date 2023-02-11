@@ -21,7 +21,6 @@ public class Arm extends SubsystemBase {
 
   private SparkMaxPIDController armPIDController;
   private RelativeEncoder armEncoder;
-  public double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput, maxRPM, maxVel, minVel, maxAcc, allowedErr;
   
   /** Creates a new Arm. */
   public Arm() {
@@ -35,27 +34,13 @@ public class Arm extends SubsystemBase {
     armPIDController = armMotor.getPIDController();
     armEncoder = armMotor.getEncoder();
 
-    // PID coefficients
-    kP = 0.00005; 
-    kI = 0.000001;
-    kD = 0; 
-    kIz = 0; 
-    kFF = 0.000156; 
-    kMaxOutput = 1; 
-    kMinOutput = -1;
-    maxRPM = 5700;
-
-    // Smart Motion Coefficients
-    maxVel = 2000; // rpm
-    maxAcc = 1500;
-
     // set PID coefficients
-    armPIDController.setP(kP);
-    armPIDController.setI(kI);
-    armPIDController.setD(kD);
-    armPIDController.setIZone(kIz);
-    armPIDController.setFF(kFF);
-    armPIDController.setOutputRange(kMinOutput, kMaxOutput);
+    armPIDController.setP(Constants.ArmConstants.armKP);
+    armPIDController.setI(Constants.ArmConstants.armKI);
+    armPIDController.setD(Constants.ArmConstants.armKD);
+    armPIDController.setIZone(Constants.ArmConstants.armKIz);
+    armPIDController.setFF(Constants.ArmConstants.armKFF);
+    armPIDController.setOutputRange(Constants.ArmConstants.armKMinOutput, Constants.ArmConstants.armKMaxOutput);
 
     /**
      * Smart Motion coefficients are set on a SparkMaxPIDController object
@@ -70,36 +55,78 @@ public class Arm extends SubsystemBase {
      * error for the pid controller in Smart Motion mode
      */
     int smartMotionSlot = 0;
-    armPIDController.setSmartMotionMaxVelocity(maxVel, smartMotionSlot);
-    armPIDController.setSmartMotionMinOutputVelocity(minVel, smartMotionSlot);
-    armPIDController.setSmartMotionMaxAccel(maxAcc, smartMotionSlot);
-    armPIDController.setSmartMotionAllowedClosedLoopError(allowedErr, smartMotionSlot);
+    armPIDController.setSmartMotionMaxVelocity(Constants.ArmConstants.armMaxVel, smartMotionSlot);
+    armPIDController.setSmartMotionMinOutputVelocity(Constants.ArmConstants.armMinVel, smartMotionSlot);
+    armPIDController.setSmartMotionMaxAccel(Constants.ArmConstants.armMaxAcc, smartMotionSlot);
+    armPIDController.setSmartMotionAllowedClosedLoopError(Constants.ArmConstants.armAllowedErr, smartMotionSlot);
 
     // display PID coefficients on SmartDashboard
-    SmartDashboard.putNumber("Arm P Gain", kP);
-    SmartDashboard.putNumber("Arm I Gain", kI);
-    SmartDashboard.putNumber("Arm D Gain", kD);
-    SmartDashboard.putNumber("Arm I Zone", kIz);
-    SmartDashboard.putNumber("Arm Feed Forward", kFF);
-    SmartDashboard.putNumber("Arm Max Output", kMaxOutput);
-    SmartDashboard.putNumber("Arm Min Output", kMinOutput);
+    SmartDashboard.putNumber("Arm P Gain", Constants.ArmConstants.armKP);
+    SmartDashboard.putNumber("Arm I Gain", Constants.ArmConstants.armKI);
+    SmartDashboard.putNumber("Arm D Gain", Constants.ArmConstants.armKD);
+    SmartDashboard.putNumber("Arm I Zone", Constants.ArmConstants.armKIz);
+    SmartDashboard.putNumber("Arm Feed Forward", Constants.ArmConstants.armKFF);
+    SmartDashboard.putNumber("Arm Max Output", Constants.ArmConstants.armKMaxOutput);
+    SmartDashboard.putNumber("Arm Min Output", Constants.ArmConstants.armKMinOutput);
 
     // display Smart Motion coefficients
-    SmartDashboard.putNumber("Arm Max Velocity", maxVel);
-    SmartDashboard.putNumber("Arm Min Velocity", minVel);
-    SmartDashboard.putNumber("Arm Max Acceleration", maxAcc);
-    SmartDashboard.putNumber("Arm Allowed Closed Loop Error", allowedErr);
+    SmartDashboard.putNumber("Arm Max Velocity", Constants.ArmConstants.armMaxVel);
+    SmartDashboard.putNumber("Arm Min Velocity", Constants.ArmConstants.armMinVel);
+    SmartDashboard.putNumber("Arm Max Acceleration", Constants.ArmConstants.armMaxAcc);
+    SmartDashboard.putNumber("Arm Allowed Closed Loop Error", Constants.ArmConstants.armAllowedErr);
     SmartDashboard.putNumber("Arm Set Position", 0);
     SmartDashboard.putNumber("Arm Set Velocity", 0);
   }
 
-  public void armToPosition(double setPoint){
-    armPIDController.setReference(setPoint, CANSparkMax.ControlType.kSmartMotion);
+  public void setPosition(double targetPosition){
+    armPIDController.setReference(targetPosition, CANSparkMax.ControlType.kSmartMotion);
   }
+
+  public void manualArm(double speed){
+    armMotor.set(speed);
+  }
+
+  public double getOutputCurrent() {
+    return armMotor.getOutputCurrent();
+  }
+
+  public double getPosition() {
+    return armEncoder.getPosition();
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   @Override
   public void periodic() {
-    
+    SmartDashboard.putNumber("Arm Current", getOutputCurrent());
+    SmartDashboard.putNumber("Arm Position", getPosition());
+
+
+
+
+
+
+
+
+
+
+
+    /*
     // This method will be called once per scheduler run
     // read PID coefficients from SmartDashboard
     double p = SmartDashboard.getNumber("Arm Set P Gain", 0);

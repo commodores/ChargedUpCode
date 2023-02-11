@@ -57,7 +57,7 @@ public class RobotContainer {
     private final Intake m_Intake = new Intake();
     private final Arm m_Arm = new Arm();
    // private final Elevator m_Elevator = new Elevator();
-    public final SmartElevator m_Elevator = new SmartElevator();
+    public final Elevator m_Elevator = new Elevator();
    
     private final SendableChooser<SequentialCommandGroup> autoChooser;
     private final AutoCommands autos;
