@@ -72,6 +72,9 @@ public class RobotContainer {
                 () -> robotCentric.getAsBoolean()
             )
         );
+
+        m_Intake.setDefaultCommand(new IntakeHold(m_Intake));
+        
         autos = new AutoCommands(s_Swerve);
         autoChooser = new SendableChooser<>();
     
@@ -103,6 +106,7 @@ public class RobotContainer {
         intake.onFalse(new InstantCommand(() -> m_Intake.runIntake(0)));
         release.onTrue(new InstantCommand(() -> m_Intake.runIntake(.4)));
         release.onFalse(new InstantCommand(() -> m_Intake.runIntake(0)));
+        
 
         lowerElevator.onTrue(new HighElevator(m_Elevator));
 

@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -34,8 +35,18 @@ public class Intake extends SubsystemBase {
       intakeMotor.set(speed);
   }
 
+  public double getOutputCurrent() {
+    return intakeMotor.getOutputCurrent();
+  }
+
+ 
+
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    SmartDashboard.putNumber("Intake Current", getOutputCurrent());
+   
   }
+
 }
