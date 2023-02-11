@@ -5,11 +5,15 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.Arm;
 
 public class GroundArm extends CommandBase {
+  private final Arm m_Arm;
   /** Creates a new GroundArm. */
-  public GroundArm() {
+  public GroundArm(Arm subsystem) {
     // Use addRequirements() here to declare subsystem dependencies.
+    m_Arm = subsystem;
+    addRequirements(m_Arm);
   }
 
   // Called when the command is initially scheduled.
@@ -18,7 +22,9 @@ public class GroundArm extends CommandBase {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    m_Arm.setPosition(-57);
+  }
 
   // Called once the command ends or is interrupted.
   @Override
