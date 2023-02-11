@@ -31,9 +31,13 @@ public class Intake extends SubsystemBase {
     
   }
 
-  public void runIntake(double speed){
+  public void runIntakeSpeed(double speed){
       intakeMotor.setVoltage(speed);
   }
+
+  public void runIntakeVolts(double volts){
+    intakeMotor.setVoltage(volts);
+}
 
   public double getOutputCurrent() {
     return intakeMotor.getOutputCurrent();

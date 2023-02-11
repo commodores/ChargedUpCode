@@ -73,8 +73,6 @@ public class RobotContainer {
             )
         );
 
-       // m_Intake.setDefaultCommand(new IntakeHold(m_Intake));
-
         autos = new AutoCommands(s_Swerve);
         autoChooser = new SendableChooser<>();
     
@@ -102,10 +100,10 @@ public class RobotContainer {
         /* Driver Buttons */
         zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroGyro()));
 
-        intake.onTrue(new InstantCommand(() -> m_Intake.runIntake(-8)));
-        intake.onFalse(new InstantCommand(() -> m_Intake.runIntake(0)));
-        release.onTrue(new InstantCommand(() -> m_Intake.runIntake(6)));
-        release.onFalse(new InstantCommand(() -> m_Intake.runIntake(0)));
+        intake.onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(-1)));
+        intake.onFalse(new InstantCommand(() -> m_Intake.runIntakeSpeed(0)));
+        release.onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(.5)));
+        release.onFalse(new InstantCommand(() -> m_Intake.runIntakeSpeed(0)));
         
 
         lowerElevator.onTrue(new HighElevator(m_Elevator));
