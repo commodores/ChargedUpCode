@@ -8,7 +8,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-import com.playingwithfusion.TimeOfFlight;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkMaxPIDController;
@@ -19,12 +18,24 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 public class Elevator extends SubsystemBase {
 
   private final CANSparkMax elevatorMotor;
-  public final TimeOfFlight elevatorSensor;
 
   private SparkMaxPIDController elevatorPIDController;
   private RelativeEncoder elevatorEncoder;
   
-  /** Creates a new Arm. */
+  double kP = Constants.ElevatorConstants.elevatorKP,
+    kI = Constants.ElevatorConstants.elevatorKI,
+    kD = Constants.ElevatorConstants.elevatorKD,
+    kIz = Constants.ElevatorConstants.elevatorKIz,
+    kFF = Constants.ElevatorConstants.elevatorKFF, 
+    kMinOutput = Constants.ElevatorConstants.elevatorKMinOutput,
+    kMaxOutput = Constants.ElevatorConstants.elevatorKMaxOutput,
+    minVel = Constants.ElevatorConstants.elevatorMinVel,
+    maxVel = Constants.ElevatorConstants.elevatorMaxVel,
+    maxAcc = Constants.ElevatorConstants.elevatorMaxAcc,
+    allowedErr = Constants.ElevatorConstants.elevatorAllowedErr;
+
+  
+  /** Creates a new Elevator. */
   public Elevator() {
     elevatorMotor = new CANSparkMax(Constants.ElevatorConstants.elevatorMotorID, MotorType.kBrushless);
 
@@ -32,20 +43,17 @@ public class Elevator extends SubsystemBase {
     elevatorMotor.setSmartCurrentLimit(20);
     elevatorMotor.setIdleMode(IdleMode.kBrake);
 
-    elevatorSensor = new TimeOfFlight(Constants.ElevatorConstants.elevatorSensorID);
-
     // initialze PID controller and encoder objects
     elevatorPIDController = elevatorMotor.getPIDController();
     elevatorEncoder = elevatorMotor.getEncoder();
 
-
     // set PID coefficients
-    elevatorPIDController.setP(Constants.ElevatorConstants.elevatorKP);
-    elevatorPIDController.setI(Constants.ElevatorConstants.elevatorKI);
-    elevatorPIDController.setD(Constants.ElevatorConstants.elevatorKD);
-    elevatorPIDController.setIZone(Constants.ElevatorConstants.elevatorKIz);
-    elevatorPIDController.setFF(Constants.ElevatorConstants.elevatorKFF);
-    elevatorPIDController.setOutputRange(Constants.ElevatorConstants.elevatorKMinOutput, Constants.ElevatorConstants.elevatorKMaxOutput);
+    elevatorPIDController.setP(kP);
+    elevatorPIDController.setI(kI);
+    elevatorPIDController.setD(kD);
+    elevatorPIDController.setIZone(kIz);
+    elevatorPIDController.setFF(kFF);
+    elevatorPIDController.setOutputRange(kMinOutput, kMaxOutput);
 
     /**
      * Smart Motion coefficients are set on a SparkMaxPIDController object
@@ -60,28 +68,26 @@ public class Elevator extends SubsystemBase {
      * error for the pid controller in Smart Motion mode
      */
     int smartMotionSlot = 0;
-    elevatorPIDController.setSmartMotionMaxVelocity(Constants.ElevatorConstants.elevatorMaxVel, smartMotionSlot);
-    elevatorPIDController.setSmartMotionMinOutputVelocity(Constants.ElevatorConstants.elevatorMinVel, smartMotionSlot);
-    elevatorPIDController.setSmartMotionMaxAccel(Constants.ElevatorConstants.elevatorMaxAcc, smartMotionSlot);
-    elevatorPIDController.setSmartMotionAllowedClosedLoopError(Constants.ElevatorConstants.elevatorAllowedErr, smartMotionSlot);
-
+    elevatorPIDController.setSmartMotionMaxVelocity(maxVel, smartMotionSlot);
+    elevatorPIDController.setSmartMotionMinOutputVelocity(minVel, smartMotionSlot);
+    elevatorPIDController.setSmartMotionMaxAccel(maxAcc, smartMotionSlot);
+    elevatorPIDController.setSmartMotionAllowedClosedLoopError(allowedErr, smartMotionSlot);
 
     // display PID coefficients on SmartDashboard
-    SmartDashboard.putNumber("Elevator P Gain", Constants.ElevatorConstants.elevatorKP);
-    SmartDashboard.putNumber("Elevator I Gain", Constants.ElevatorConstants.elevatorKI);
-    SmartDashboard.putNumber("Elevator D Gain", Constants.ElevatorConstants.elevatorKD);
-    SmartDashboard.putNumber("Elevator I Zone", Constants.ElevatorConstants.elevatorKIz);
-    SmartDashboard.putNumber("Elevator Feed Forward", Constants.ElevatorConstants.elevatorKFF);
-    SmartDashboard.putNumber("Elevator Max Output", Constants.ElevatorConstants.elevatorKMaxOutput);
-    SmartDashboard.putNumber("Elevator Min Output", Constants.ElevatorConstants.elevatorKMinOutput);
+    SmartDashboard.putNumber("Elevator Set P Gain", kP);
+    SmartDashboard.putNumber("Elevator I Gain", kI);
+    SmartDashboard.putNumber("Elevator D Gain", kD);
+    SmartDashboard.putNumber("Elevator I Zone", kIz);
+    SmartDashboard.putNumber("Elevator Set Feed Forward", kFF);
+    SmartDashboard.putNumber("Elevator Max Output", kMaxOutput);
+    SmartDashboard.putNumber("Elevator Min Output", kMinOutput);
 
     // display Smart Motion coefficients
-    SmartDashboard.putNumber("Elevator Max Velocity", Constants.ElevatorConstants.elevatorMaxVel);
-    SmartDashboard.putNumber("Elevator Min Velocity", Constants.ElevatorConstants.elevatorMinVel);
-    SmartDashboard.putNumber("Elevator Max Acceleration", Constants.ElevatorConstants.elevatorMaxAcc);
-    SmartDashboard.putNumber("Elevator Allowed Closed Loop Error", Constants.ElevatorConstants.elevatorAllowedErr);
+    SmartDashboard.putNumber("Elevator Max Velocity", maxVel);
+    SmartDashboard.putNumber("Elevator Min Velocity", minVel);
+    SmartDashboard.putNumber("Elevator Max Acceleration", maxAcc);
+    SmartDashboard.putNumber("Elevator Allowed Closed Loop Error", allowedErr);
     SmartDashboard.putNumber("Elevator Set Position", 0);
-    SmartDashboard.putNumber("Elevator Set Velocity", 0);
   }
 
   public void setPosition(double targetPosition){
@@ -102,34 +108,10 @@ public class Elevator extends SubsystemBase {
 
   @Override
   public void periodic() {
-
     SmartDashboard.putNumber("Elevator Current", getOutputCurrent());
     SmartDashboard.putNumber("Elevator Position", getPosition());
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     
-
-
-
-
-
-
-    /*
     // This method will be called once per scheduler run
     // read PID coefficients from SmartDashboard
     double p = SmartDashboard.getNumber("Elevator Set P Gain", 0);
@@ -159,23 +141,19 @@ public class Elevator extends SubsystemBase {
     if((maxA != maxAcc)) { elevatorPIDController.setSmartMotionMaxAccel(maxA,0); maxAcc = maxA; }
     if((allE != allowedErr)) { elevatorPIDController.setSmartMotionAllowedClosedLoopError(allE,0); allowedErr = allE; }
 
-    /*
-    double setPoint, processVariable;
-
-    setPoint = SmartDashboard.getNumber("Set Position", 0);
+    
+    double setPoint = SmartDashboard.getNumber("Set Position", 0);
     
       /**
        * As with other PID modes, Smart Motion is set by calling the
        * setReference method on an existing pid object and setting
        * the control type to kSmartMotion
        */
-    /*
+    
     elevatorPIDController.setReference(setPoint, CANSparkMax.ControlType.kSmartMotion);
-    processVariable = elevatorEncoder.getPosition();
 
-    SmartDashboard.putNumber("Elevator SetPoint", setPoint);
-    SmartDashboard.putNumber("Elevator Process Variable", processVariable);
-    SmartDashboard.putNumber("Elevator Output", armMotor.getAppliedOutput());
-    */
+    SmartDashboard.putNumber("SetPoint", setPoint);
+    SmartDashboard.putNumber("Output", elevatorMotor.getAppliedOutput());
+    
   }
 }

@@ -280,7 +280,7 @@
         "vgap": 16.0,
         "titleType": 1,
         "tiles": {
-          "2,1": {
+          "1,1": {
             "size": [
               1,
               1
@@ -293,20 +293,7 @@
               "_showGlyph": false
             }
           },
-          "3,1": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Arm Feed Forward",
-              "_title": "/SmartDashboard/Arm Feed Forward",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "1,1": {
+          "0,1": {
             "size": [
               1,
               1
@@ -315,19 +302,6 @@
               "_type": "Text View",
               "_source0": "network_table:///SmartDashboard/Arm I Gain",
               "_title": "/SmartDashboard/Arm I Gain",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "0,1": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Arm P Gain",
-              "_title": "/SmartDashboard/Arm P Gain",
               "_glyph": 148,
               "_showGlyph": false
             }
@@ -357,6 +331,45 @@
               "_glyph": 148,
               "_showGlyph": false
             }
+          },
+          "0,4": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Arm Set Position",
+              "_title": "/SmartDashboard/Arm Set Position",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "0,2": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Arm Set Feed Forward",
+              "_title": "/SmartDashboard/Arm Set Feed Forward",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "0,3": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Arm Set P Gain",
+              "_title": "/SmartDashboard/Arm Set P Gain",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
           }
         }
       }
@@ -372,7 +385,7 @@
         "vgap": 16.0,
         "titleType": 1,
         "tiles": {
-          "2,1": {
+          "1,1": {
             "size": [
               1,
               1
@@ -398,7 +411,7 @@
               "_showGlyph": false
             }
           },
-          "1,1": {
+          "0,1": {
             "size": [
               1,
               1
@@ -407,19 +420,6 @@
               "_type": "Text View",
               "_source0": "network_table:///SmartDashboard/Elevator I Gain",
               "_title": "/SmartDashboard/Elevator I Gain",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "0,1": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Elevator P Gain",
-              "_title": "/SmartDashboard/Elevator P Gain",
               "_glyph": 148,
               "_showGlyph": false
             }
@@ -437,15 +437,41 @@
               "_showGlyph": false
             }
           },
-          "3,1": {
+          "0,2": {
             "size": [
-              1,
+              2,
               1
             ],
             "content": {
               "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Elevator Feed Forward",
-              "_title": "/SmartDashboard/Elevator Feed Forward",
+              "_source0": "network_table:///SmartDashboard/Elevator Set Feed Forward",
+              "_title": "/SmartDashboard/Elevator Set Feed Forward",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "0,3": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Elevator Set P Gain",
+              "_title": "/SmartDashboard/Elevator Set P Gain",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "0,4": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Elevator Set Position",
+              "_title": "/SmartDashboard/Elevator Set Position",
               "_glyph": 148,
               "_showGlyph": false
             }
@@ -466,7 +492,7 @@
         "tiles": {
           "0,0": {
             "size": [
-              6,
+              7,
               5
             ],
             "content": {
@@ -528,9 +554,9 @@
         "vgap": 16.0,
         "titleType": 1,
         "tiles": {
-          "3,1": {
+          "0,0": {
             "size": [
-              3,
+              2,
               1
             ],
             "content": {
@@ -546,9 +572,9 @@
     }
   ],
   "windowGeometry": {
-    "x": -7.199999809265137,
-    "y": -7.199999809265137,
-    "width": 1550.4000244140625,
-    "height": 878.4000244140625
+    "x": -1928.0,
+    "y": -8.0,
+    "width": 1936.0,
+    "height": 1048.0
   }
 }
