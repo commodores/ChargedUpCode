@@ -34,7 +34,7 @@ public class TestArm extends SubsystemBase {
   
   /** Creates a new ArmSubsystem. */
   public TestArm() {
-    m_motor = new CANSparkMax(Constants.ArmConstants.armMotorID, CANSparkMaxLowLevel.MotorType.kBrushless);
+    m_motor = new CANSparkMax(Constants.ArmConstants.testArmMotorID, CANSparkMaxLowLevel.MotorType.kBrushless);
     m_motor.setInverted(false);
     m_motor.setSmartCurrentLimit(Constants.ArmConstants.kCurrentLimit);
     m_motor.enableSoftLimit(SoftLimitDirection.kForward, true);

@@ -165,6 +165,7 @@ public final class Constants {
         public static final int armMotorID = 13;
         
         //testing rev code////////////////////////////////////////////////
+        public static final int testArmMotorID = 62;
         public static final int kCurrentLimit = 40;
 
         public static final double kSoftLimitReverse = 0.0;

@@ -52,6 +52,8 @@ public class RobotContainer {
     private final Swerve s_Swerve = new Swerve();
     private final Intake m_Intake = new Intake();
     private final Arm m_Arm = new Arm();
+    private final TestArm m_TestArm = new TestArm();
+    
    // private final Elevator m_Elevator = new Elevator();
     public final Elevator m_Elevator = new Elevator();
    
