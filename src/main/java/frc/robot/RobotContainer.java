@@ -36,19 +36,17 @@ public class RobotContainer {
     private final JoystickButton robotCentric = new JoystickButton(driver, XboxController.Button.kX.value);
     private final JoystickButton intake  = new JoystickButton(driver, XboxController.Button.kRightBumper.value);
     private final JoystickButton release = new JoystickButton(driver, XboxController.Button.kLeftBumper.value);
-    private final JoystickButton lowerElevator = new JoystickButton(driver, XboxController.Button.kA.value);
-    private final JoystickButton raiseElevator = new JoystickButton(driver, XboxController.Button.kB.value);
-    private final JoystickButton armdown = new JoystickButton(driver,XboxController.Button.kBack.value);
-    private final JoystickButton armup = new JoystickButton(driver,XboxController.Button.kStart.value);
-
+    
 
      /* Driver Buttons Controller 2 */
     private final JoystickButton raiseArm = new JoystickButton(driverTwo, XboxController.Button.kRightBumper.value);
     private final JoystickButton lowerArm = new JoystickButton(driverTwo, XboxController.Button.kLeftBumper.value);
-    private final JoystickButton restpose = new JoystickButton(driverTwo, XboxController.Button.kB.value);
-    private final JoystickButton armHigh = new JoystickButton(driverTwo, XboxController.Button.kY.value);
-    private final JoystickButton armMid = new JoystickButton(driverTwo, XboxController.Button.kX.value);
-    private final JoystickButton armLow = new JoystickButton(driverTwo, XboxController.Button.kA.value);
+    private final JoystickButton raiseElevator = new JoystickButton(driverTwo, XboxController.Button.kStart.value);
+    private final JoystickButton lowerElevator = new JoystickButton(driverTwo, XboxController.Button.kBack.value);    
+    private final JoystickButton stow = new JoystickButton(driverTwo, XboxController.Button.kA.value);
+    private final JoystickButton ground = new JoystickButton(driverTwo, XboxController.Button.kB.value);
+    private final JoystickButton mid = new JoystickButton(driverTwo, XboxController.Button.kX.value);
+    private final JoystickButton high = new JoystickButton(driverTwo, XboxController.Button.kY.value);
 
     /* Subsystems */
     private final Swerve s_Swerve = new Swerve();
@@ -106,11 +104,23 @@ public class RobotContainer {
         release.onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(.5)));
         release.onFalse(new InstantCommand(() -> m_Intake.runIntakeSpeed(0)));
         
-        raiseElevator.onTrue(new HighElevator(m_Elevator));
+        stow.onTrue(new Stow(m_Arm, m_Elevator));
+        ground.onTrue(new Ground(m_Arm, m_Elevator));
+        mid.onTrue(new Mid(m_Arm, m_Elevator));
+        high.onTrue(new High(m_Arm, m_Elevator));
+
+        high.onTrue(new HighElevator(m_Elevator));
         lowerElevator.onTrue(new GroundElevator(m_Elevator));
 
-        armup.onTrue(new Ground(m_Arm, m_Elevator));
-        armdown.onTrue(new HighArm(m_Arm));
+        raiseArm.onTrue(new InstantCommand(() -> m_Arm.manualArm(.5)));
+        raiseArm.onFalse(new InstantCommand(() -> m_Arm.manualArm(0)));
+        lowerArm.onTrue(new InstantCommand(() -> m_Arm.manualArm(-.5)));
+        lowerArm.onFalse(new InstantCommand(() -> m_Arm.manualArm(0)));
+
+        raiseElevator.onTrue(new InstantCommand(() -> m_Elevator.manualElevator(.5)));
+        raiseElevator.onFalse(new InstantCommand(() -> m_Elevator.manualElevator(0)));
+        lowerElevator.onTrue(new InstantCommand(() -> m_Elevator.manualElevator(-.5)));
+        lowerElevator.onFalse(new InstantCommand(() -> m_Elevator.manualElevator(0)));
     
     }
 

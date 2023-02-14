@@ -7,10 +7,10 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Elevator;
 
-public class ShelfElevator extends CommandBase {
+public class StowElevator extends CommandBase {
   private final Elevator m_Elevator;
   /** Creates a new ShelfElevator. */
-  public ShelfElevator(Elevator subsystem) {
+  public StowElevator(Elevator subsystem) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_Elevator = subsystem;
     addRequirements(m_Elevator);

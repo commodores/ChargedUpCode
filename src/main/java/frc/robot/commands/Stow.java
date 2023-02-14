@@ -12,15 +12,15 @@ import frc.robot.subsystems.Elevator;
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
-public class Shelf extends ParallelCommandGroup {
+public class Stow extends ParallelCommandGroup {
   private final Elevator m_Elevator;
   private final Arm m_Arm;
   /** Creates a new Shelf. */
-  public Shelf(Arm armSusbsystem, Elevator elevatorSubsystem) {
+  public Stow(Arm armSusbsystem, Elevator elevatorSubsystem) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     m_Arm = armSusbsystem;
     m_Elevator = elevatorSubsystem;
-    addCommands(new ShelfArm(m_Arm), new ShelfElevator(m_Elevator));
+    addCommands(new StowArm(m_Arm), new StowElevator(m_Elevator));
   }
 }

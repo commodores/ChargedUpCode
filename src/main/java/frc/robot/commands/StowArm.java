@@ -7,11 +7,11 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Arm;
 
-public class ShelfArm extends CommandBase {
+public class StowArm extends CommandBase {
   private final Arm m_Arm;
 
   /** Creates a new ShelfArm. */
-  public ShelfArm(Arm subsystem) {
+  public StowArm(Arm subsystem) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_Arm = subsystem;
     addRequirements(m_Arm);
