@@ -24,8 +24,8 @@ public final class Constants {
             COTSFalconSwerveConstants.SDSMK4i(COTSFalconSwerveConstants.driveGearRatios.SDSMK4i_L2);
 
         /* Drivetrain Constants */
-        public static final double trackWidth = Units.inchesToMeters(18.6875); //TODO: This must be tuned to specific robot
-        public static final double wheelBase = Units.inchesToMeters(18.6875); //TODO: This must be tuned to specific robot
+        public static final double trackWidth = Units.inchesToMeters(19.75); //TODO: This must be tuned to specific robot
+        public static final double wheelBase = Units.inchesToMeters(28.75); //TODO: This must be tuned to specific robot
         public static final double wheelCircumference = chosenModule.wheelCircumference;
 
         /* Swerve Kinematics 
@@ -48,12 +48,12 @@ public final class Constants {
         public static final boolean canCoderInvert = chosenModule.canCoderInvert;
 
         /* Swerve Current Limiting */
-        public static final int angleContinuousCurrentLimit = 25;
+        public static final int angleContinuousCurrentLimit = 28; //25
         public static final int anglePeakCurrentLimit = 40;
         public static final double anglePeakCurrentDuration = 0.1;
         public static final boolean angleEnableCurrentLimit = true;
 
-        public static final int driveContinuousCurrentLimit = 35;
+        public static final int driveContinuousCurrentLimit = 38; //35
         public static final int drivePeakCurrentLimit = 60;
         public static final double drivePeakCurrentDuration = 0.1;
         public static final boolean driveEnableCurrentLimit = true;
