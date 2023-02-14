@@ -2,6 +2,7 @@ package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 
+import edu.wpi.first.math.controller.ArmFeedforward;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Rotation3d;
 import edu.wpi.first.math.geometry.Transform3d;
@@ -12,6 +13,7 @@ import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.math.util.Units;
 import frc.lib.util.COTSFalconSwerveConstants;
 import frc.lib.util.SwerveModuleConstants;
+import frc.lib.util.RevPIDGains;
 
 public final class Constants {
     public static final double stickDeadband = 0.1;
@@ -161,7 +163,25 @@ public final class Constants {
 
     public static final class ArmConstants {
         public static final int armMotorID = 13;
+        
+        //testing rev code////////////////////////////////////////////////
+        public static final int kCurrentLimit = 40;
 
+        public static final double kSoftLimitReverse = 0.0;
+        public static final double kSoftLimitForward = 4.6;
+
+        public static final double kArmGearRatio = 1 / (125 * 2) * 2 * Math.PI; //multiply SM value by this number and get arm position in radians
+        public static final double kArmZeroCosineOffset = - Math.PI / 6; //radians to add to converted arm position to get real-world arm position (starts at ~30deg angle)
+        public static final ArmFeedforward kArmFeedforward = new ArmFeedforward(0.0, 0.4, 12/3.09577776, 0.0);
+        public static final RevPIDGains kArmPositionGains = new RevPIDGains(0.6, 0.0, 0.0);
+        public static final TrapezoidProfile.Constraints kArmMotionConstraint = new TrapezoidProfile.Constraints(2.0, 2.0);
+
+        public static final double kHomePosition = 0.0;
+        public static final double kScoringPosition = 3.05;
+        public static final double kIntakePosition = 4.52;
+        public static final double kFeederPosition = 2.95;
+        /////////////////////////////////////////////////////////////////////
+        
         // PID coefficients
         public static final double armKP = 0.0000; 
         public static final double armKI = 0.000000;
