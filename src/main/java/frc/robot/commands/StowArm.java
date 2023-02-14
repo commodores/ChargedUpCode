@@ -24,7 +24,7 @@ public class StowArm extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_Arm.setPosition(-44);
+    m_Arm.setPosition(-10);
   }
 
   // Called once the command ends or is interrupted.
