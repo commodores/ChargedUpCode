@@ -32,7 +32,7 @@ public class Intake extends SubsystemBase {
   }
 
   public void runIntakeSpeed(double speed){
-      intakeMotor.setVoltage(speed);
+      intakeMotor.set(speed);
   }
 
   public void runIntakeVolts(double volts){

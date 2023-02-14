@@ -109,9 +109,6 @@ public class RobotContainer {
         mid.onTrue(new Mid(m_Arm, m_Elevator));
         high.onTrue(new High(m_Arm, m_Elevator));
 
-        high.onTrue(new HighElevator(m_Elevator));
-        lowerElevator.onTrue(new GroundElevator(m_Elevator));
-
         raiseArm.onTrue(new InstantCommand(() -> m_Arm.manualArm(.5)));
         raiseArm.onFalse(new InstantCommand(() -> m_Arm.manualArm(0)));
         lowerArm.onTrue(new InstantCommand(() -> m_Arm.manualArm(-.5)));
