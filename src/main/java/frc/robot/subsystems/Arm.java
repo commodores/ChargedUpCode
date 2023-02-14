@@ -40,7 +40,7 @@ public class Arm extends SubsystemBase {
     armMotor = new CANSparkMax(Constants.ArmConstants.armMotorID, MotorType.kBrushless);
 
     armMotor.restoreFactoryDefaults();
-    armMotor.setSmartCurrentLimit(20);
+    armMotor.setSmartCurrentLimit(30);
     armMotor.setIdleMode(IdleMode.kBrake);
 
     // initialze PID controller and encoder objects
@@ -74,11 +74,11 @@ public class Arm extends SubsystemBase {
     armPIDController.setSmartMotionAllowedClosedLoopError(allowedErr, smartMotionSlot);
 
     // display PID coefficients on SmartDashboard
-    SmartDashboard.putNumber("Arm Set P Gain", kP);
+    SmartDashboard.putNumber("Arm P Gain", kP);
     SmartDashboard.putNumber("Arm I Gain", kI);
     SmartDashboard.putNumber("Arm D Gain", kD);
     SmartDashboard.putNumber("Arm I Zone", kIz);
-    SmartDashboard.putNumber("Arm Set Feed Forward", kFF);
+    SmartDashboard.putNumber("Arm Feed Forward", kFF);
     SmartDashboard.putNumber("Arm Max Output", kMaxOutput);
     SmartDashboard.putNumber("Arm Min Output", kMinOutput);
 
@@ -87,7 +87,7 @@ public class Arm extends SubsystemBase {
     SmartDashboard.putNumber("Arm Min Velocity", minVel);
     SmartDashboard.putNumber("Arm Max Acceleration", maxAcc);
     SmartDashboard.putNumber("Arm Allowed Closed Loop Error", allowedErr);
-    SmartDashboard.putNumber("Arm Set Position", 0);
+    SmartDashboard.putNumber("Arm Position", 0);
   }
 
   public void setPosition(double targetPosition){
@@ -111,7 +111,7 @@ public class Arm extends SubsystemBase {
     SmartDashboard.putNumber("Arm Current", getOutputCurrent());
     SmartDashboard.putNumber("Arm Position", getPosition());
 
-    
+    /*
     // This method will be called once per scheduler run
     // read PID coefficients from SmartDashboard
     double p = SmartDashboard.getNumber("Arm Set P Gain", 0);
@@ -148,11 +148,11 @@ public class Arm extends SubsystemBase {
        * setReference method on an existing pid object and setting
        * the control type to kSmartMotion
        */
-    
+    /*
     armPIDController.setReference(setPoint, CANSparkMax.ControlType.kSmartMotion);
 
     SmartDashboard.putNumber("SetPoint", setPoint);
     SmartDashboard.putNumber("Output", armMotor.getAppliedOutput());
-    
+    */
   }
 }

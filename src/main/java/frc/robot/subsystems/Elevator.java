@@ -40,7 +40,7 @@ public class Elevator extends SubsystemBase {
     elevatorMotor = new CANSparkMax(Constants.ElevatorConstants.elevatorMotorID, MotorType.kBrushless);
 
     elevatorMotor.restoreFactoryDefaults();
-    elevatorMotor.setSmartCurrentLimit(20);
+    elevatorMotor.setSmartCurrentLimit(30);
     elevatorMotor.setIdleMode(IdleMode.kBrake);
 
     // initialze PID controller and encoder objects
@@ -74,11 +74,11 @@ public class Elevator extends SubsystemBase {
     elevatorPIDController.setSmartMotionAllowedClosedLoopError(allowedErr, smartMotionSlot);
 
     // display PID coefficients on SmartDashboard
-    SmartDashboard.putNumber("Elevator Set P Gain", kP);
+    SmartDashboard.putNumber("Elevator P Gain", kP);
     SmartDashboard.putNumber("Elevator I Gain", kI);
     SmartDashboard.putNumber("Elevator D Gain", kD);
     SmartDashboard.putNumber("Elevator I Zone", kIz);
-    SmartDashboard.putNumber("Elevator Set Feed Forward", kFF);
+    SmartDashboard.putNumber("Elevator Feed Forward", kFF);
     SmartDashboard.putNumber("Elevator Max Output", kMaxOutput);
     SmartDashboard.putNumber("Elevator Min Output", kMinOutput);
 
@@ -87,7 +87,7 @@ public class Elevator extends SubsystemBase {
     SmartDashboard.putNumber("Elevator Min Velocity", minVel);
     SmartDashboard.putNumber("Elevator Max Acceleration", maxAcc);
     SmartDashboard.putNumber("Elevator Allowed Closed Loop Error", allowedErr);
-    SmartDashboard.putNumber("Elevator Set Position", 0);
+    SmartDashboard.putNumber("Elevator Position", 0);
   }
 
   public void setPosition(double targetPosition){
@@ -111,7 +111,7 @@ public class Elevator extends SubsystemBase {
     SmartDashboard.putNumber("Elevator Current", getOutputCurrent());
     SmartDashboard.putNumber("Elevator Position", getPosition());
 
-    
+    /*
     // This method will be called once per scheduler run
     // read PID coefficients from SmartDashboard
     double p = SmartDashboard.getNumber("Elevator Set P Gain", 0);
@@ -149,11 +149,11 @@ public class Elevator extends SubsystemBase {
        * setReference method on an existing pid object and setting
        * the control type to kSmartMotion
        */
-    
+    /*
     elevatorPIDController.setReference(setPoint, CANSparkMax.ControlType.kSmartMotion);
 
     SmartDashboard.putNumber("SetPoint", setPoint);
     SmartDashboard.putNumber("Output", elevatorMotor.getAppliedOutput());
-    
+    */
   }
 }

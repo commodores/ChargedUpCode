@@ -38,7 +38,8 @@ public class RobotContainer {
     private final JoystickButton release = new JoystickButton(driver, XboxController.Button.kLeftBumper.value);
     private final JoystickButton lowerElevator = new JoystickButton(driver, XboxController.Button.kA.value);
     private final JoystickButton raiseElevator = new JoystickButton(driver, XboxController.Button.kB.value);
-    private final JoystickButton bigTest = new JoystickButton(driver,XboxController.Button.kBack.value);
+    private final JoystickButton armdown = new JoystickButton(driver,XboxController.Button.kBack.value);
+    private final JoystickButton armup = new JoystickButton(driver,XboxController.Button.kStart.value);
 
 
      /* Driver Buttons Controller 2 */
@@ -105,13 +106,11 @@ public class RobotContainer {
         release.onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(.5)));
         release.onFalse(new InstantCommand(() -> m_Intake.runIntakeSpeed(0)));
         
+        raiseElevator.onTrue(new HighElevator(m_Elevator));
+        lowerElevator.onTrue(new GroundElevator(m_Elevator));
 
-        lowerElevator.onTrue(new HighElevator(m_Elevator));
-
-        lowerArm.onTrue(new HighArm(m_Arm));
-
-        bigTest.onTrue(new High(m_Arm, m_Elevator));
-    
+        armup.onTrue(new Ground(m_Arm, m_Elevator));
+        armdown.onTrue(new HighArm(m_Arm));
     
     }
 

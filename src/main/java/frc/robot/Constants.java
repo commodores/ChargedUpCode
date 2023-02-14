@@ -163,41 +163,41 @@ public final class Constants {
         public static final int armMotorID = 13;
 
         // PID coefficients
-        public static final double armKP = 0.00005; 
-        public static final double armKI = 0.000001;
-        public static final double armKD = 0; 
+        public static final double armKP = 0.00001; 
+        public static final double armKI = 0.000000;
+        public static final double armKD = 0.0000; 
         public static final double armKIz = 0; 
-        public static final double armKFF = 0.000156; 
+        public static final double armKFF = 0.0006;
         public static final double armKMaxOutput = 1; 
         public static final double armKMinOutput = -1;
         public static final double armMaxRPM = 5700;
 
         // Smart Motion Coefficients
         public static final int armMinVel = 0; // rpm
-        public static final int armMaxVel = 2000; // rpm
-        public static final int armMaxAcc = 1500;
+        public static final int armMaxVel = 2500; // rpm
+        public static final int armMaxAcc = 2000;
         public static final int armAllowedErr = 1;
     }
-
+    // 1 unit = 0.2inches of travel
     public static final class ElevatorConstants {
         public static final int elevatorMotorID = 14;
         public static final int elevatorSensorID = 0;
         
         // PID coefficients
-        public static final double elevatorKP = 0.00005; 
-        public static final double elevatorKI = 0.000001;
+        public static final double elevatorKP = 0.00001; 
+        public static final double elevatorKI = 0.00000;
         public static final double elevatorKD = 0; 
         public static final double elevatorKIz = 0; 
-        public static final double elevatorKFF = 0.000156; 
+        public static final double elevatorKFF = 0.001; 
         public static final double elevatorKMaxOutput = 1; 
         public static final double elevatorKMinOutput = -1;
         public static final double elevatorMaxRPM = 5700;
 
         // Smart Motion Coefficients
         public static final int elevatorMinVel = 0; // rpm
-        public static final int elevatorMaxVel = 2000; // rpm
-        public static final int elevatorMaxAcc = 1500;
-        public static final int elevatorAllowedErr = 1;
+        public static final int elevatorMaxVel = 2500; // rpm
+        public static final int elevatorMaxAcc = 2000;
+        public static final double elevatorAllowedErr = .25;
     }
 
     public static final class IntakeConstants {
