@@ -170,15 +170,15 @@ public final class Constants {
         public static final double armKI = 0.000000;
         public static final double armKD = 0.0000; 
         public static final double armKIz = 0; 
-        public static final double armKFF = 0.0001;
+        public static final double armKFF = 0.0002;
         public static final double armKMaxOutput = 1; 
         public static final double armKMinOutput = -1;
         public static final double armMaxRPM = 5700;
 
         // Smart Motion Coefficients
         public static final int armMinVel = 0; // rpm
-        public static final int armMaxVel = 1500; // rpm
-        public static final int armMaxAcc = 1000;
+        public static final int armMaxVel = 2000; // rpm
+        public static final int armMaxAcc = 1500;
         public static final double armAllowedErr = .25;
     }
     

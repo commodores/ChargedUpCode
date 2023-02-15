@@ -45,8 +45,8 @@ public class RobotContainer {
     /* Driver Buttons Controller 2 */
     private final JoystickButton intake  = new JoystickButton(driverTwo, XboxController.Button.kRightBumper.value);
     private final JoystickButton release = new JoystickButton(driverTwo, XboxController.Button.kLeftBumper.value);  
-    private final JoystickButton stow = new JoystickButton(driverTwo, XboxController.Button.kA.value);
-    private final JoystickButton ground = new JoystickButton(driverTwo, XboxController.Button.kB.value);
+    private final JoystickButton stow = new JoystickButton(driverTwo, XboxController.Button.kB .value);
+    private final JoystickButton ground = new JoystickButton(driverTwo, XboxController.Button.kA.value);
     private final JoystickButton mid = new JoystickButton(driverTwo, XboxController.Button.kX.value);
     private final JoystickButton high = new JoystickButton(driverTwo, XboxController.Button.kY.value);
     private final JoystickButton shelf = new JoystickButton(driverTwo, XboxController.Button.kStart.value);
@@ -54,11 +54,11 @@ public class RobotContainer {
 
     /* Subsystems */
     private final Swerve s_Swerve = new Swerve();
-    private final Intake m_Intake = new Intake();
-    private final Arm m_Arm = new Arm();
+    public final static Intake m_Intake = new Intake();
+    public final static Arm m_Arm = new Arm();
     
    // private final Elevator m_Elevator = new Elevator();
-    public final Elevator m_Elevator = new Elevator();
+    public final static Elevator m_Elevator = new Elevator();
    
     private final SendableChooser<SequentialCommandGroup> autoChooser;
     private final AutoCommands autos;    
@@ -76,7 +76,7 @@ public class RobotContainer {
             )
         );
 
-        m_Intake.setDefaultCommand(new IntakeHold(m_Intake));
+       // m_Intake.setDefaultCommand(new IntakeHold(m_Intake));
 
         autos = new AutoCommands(s_Swerve);
         autoChooser = new SendableChooser<>();
@@ -107,7 +107,7 @@ public class RobotContainer {
 
         intake.onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(-1)));
         intake.onFalse(new InstantCommand(() -> m_Intake.runIntakeSpeed(0)));
-        release.onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(.5)));
+        release.onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(.3)));
         release.onFalse(new InstantCommand(() -> m_Intake.runIntakeSpeed(0)));
         
         stow.onTrue(new Stow(m_Arm, m_Elevator));
