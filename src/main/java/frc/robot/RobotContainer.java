@@ -49,12 +49,13 @@ public class RobotContainer {
     private final JoystickButton ground = new JoystickButton(driverTwo, XboxController.Button.kB.value);
     private final JoystickButton mid = new JoystickButton(driverTwo, XboxController.Button.kX.value);
     private final JoystickButton high = new JoystickButton(driverTwo, XboxController.Button.kY.value);
+    private final JoystickButton shelf = new JoystickButton(driverTwo, XboxController.Button.kStart.value);
+
 
     /* Subsystems */
     private final Swerve s_Swerve = new Swerve();
     private final Intake m_Intake = new Intake();
     private final Arm m_Arm = new Arm();
-    private final TestArm m_TestArm = new TestArm();
     
    // private final Elevator m_Elevator = new Elevator();
     public final Elevator m_Elevator = new Elevator();
@@ -75,6 +76,8 @@ public class RobotContainer {
                 () -> robotCentric.getAsBoolean()
             )
         );
+
+        m_Intake.setDefaultCommand(new IntakeHold(m_Intake));
 
         autos = new AutoCommands(s_Swerve);
         autoChooser = new SendableChooser<>();
@@ -108,37 +111,20 @@ public class RobotContainer {
         release.onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(.5)));
         release.onFalse(new InstantCommand(() -> m_Intake.runIntakeSpeed(0)));
         
-        //stow.onTrue(new Stow(m_Arm, m_Elevator));
-        //ground.onTrue(new Ground(m_Arm, m_Elevator));
-        //mid.onTrue(new Mid(m_Arm, m_Elevator));
-        //high.onTrue(new High(m_Arm, m_Elevator));
+        stow.onTrue(new Stow(m_Arm, m_Elevator));
+        ground.onTrue(new Ground(m_Arm, m_Elevator));
+        mid.onTrue(new Mid(m_Arm, m_Elevator));
+        high.onTrue(new High(m_Arm, m_Elevator));
 
-        //raiseArm.onTrue(new InstantCommand(() -> m_Arm.manualArm(.2)));
-        //raiseArm.onFalse(new InstantCommand(() -> m_Arm.manualArm(0)));
-        //lowerArm.onTrue(new InstantCommand(() -> m_Arm.manualArm(-.2)));
-        //lowerArm.onFalse(new InstantCommand(() -> m_Arm.manualArm(0)));
+        raiseArm.onTrue(new InstantCommand(() -> m_Arm.manualArm(.2)));
+        raiseArm.onFalse(new InstantCommand(() -> m_Arm.manualArm(0)));
+        lowerArm.onTrue(new InstantCommand(() -> m_Arm.manualArm(-.2)));
+        lowerArm.onFalse(new InstantCommand(() -> m_Arm.manualArm(0)));
 
-        //raiseElevator.onTrue(new InstantCommand(() -> m_Elevator.manualElevator(.5)));
-        //raiseElevator.onFalse(new InstantCommand(() -> m_Elevator.manualElevator(0)));
-        //lowerElevator.onTrue(new InstantCommand(() -> m_Elevator.manualElevator(-.5)));
-        //lowerElevator.onFalse(new InstantCommand(() -> m_Elevator.manualElevator(0)));
-        
-
-
-        //set up arm preset positions
-        new JoystickButton(driverTwo, XboxController.Button.kA.value)
-            .onTrue(new InstantCommand(() -> m_TestArm.setTargetPosition(Constants.ArmConstants.kHomePosition)));
-        new JoystickButton(driverTwo, XboxController.Button.kX.value)
-            .onTrue(new InstantCommand(() -> m_TestArm.setTargetPosition(Constants.ArmConstants.kScoringPosition)));
-        new JoystickButton(driverTwo, XboxController.Button.kY.value)
-            .onTrue(new InstantCommand(() -> m_TestArm.setTargetPosition(Constants.ArmConstants.kIntakePosition)));
-        new JoystickButton(driverTwo, XboxController.Button.kB.value)
-            .onTrue(new InstantCommand(() -> m_TestArm.setTargetPosition(Constants.ArmConstants.kFeederPosition)));
-
-        //set up arm manual and auto functions
-        m_TestArm.setDefaultCommand(new RunCommand(() -> m_TestArm.runAutomatic(), m_TestArm));
-
-        new Trigger(() -> Math.abs(driverTwo.getRightTriggerAxis() - driverTwo.getLeftTriggerAxis()) > Constants.OIConstants.kArmManualDeadband).whileTrue(new RunCommand(() -> m_TestArm.runManual((driverTwo.getRightTriggerAxis() - driverTwo.getLeftTriggerAxis()) * Constants.OIConstants.kArmManualScale), m_TestArm));
+        raiseElevator.onTrue(new InstantCommand(() -> m_Elevator.manualElevator(.5)));
+        raiseElevator.onFalse(new InstantCommand(() -> m_Elevator.manualElevator(0)));
+        lowerElevator.onTrue(new InstantCommand(() -> m_Elevator.manualElevator(-.5)));
+        lowerElevator.onFalse(new InstantCommand(() -> m_Elevator.manualElevator(0)));
         
     }
 

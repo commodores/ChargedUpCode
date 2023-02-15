@@ -5,15 +5,15 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Elevator;
 
-public class IntakeHold extends CommandBase {
-  /** Creates a new IntakeHold. */
-  private final Intake m_Intake;
-  public IntakeHold(Intake subsystem) {
+public class ShelfElevator extends CommandBase {
+  private final Elevator m_Elevator;
+  /** Creates a new HighElevator. */
+  public ShelfElevator(Elevator subsystem) {
     // Use addRequirements() here to declare subsystem dependencies.
-    m_Intake = subsystem;
-    addRequirements(m_Intake);
+    m_Elevator = subsystem;
+    addRequirements(m_Elevator);
   }
 
   // Called when the command is initially scheduled.
@@ -23,14 +23,12 @@ public class IntakeHold extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_Intake.runIntakeSpeed(-.04);
+    m_Elevator.setPosition(174.5);
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
-    m_Intake.runIntakeSpeed(0);
-  }
+  public void end(boolean interrupted) {}
 
   // Returns true when the command should end.
   @Override

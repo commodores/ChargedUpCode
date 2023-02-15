@@ -162,27 +162,9 @@ public final class Constants {
     }
 
     public static final class ArmConstants {
-        public static final int armMotorID = 62;
         
-        //testing rev code////////////////////////////////////////////////
-        public static final int testArmMotorID = 13;
-        public static final int kCurrentLimit = 40;
-
-        public static final double kSoftLimitReverse = -20;
-        public static final double kSoftLimitForward = 0;
-
-        public static final double kArmGearRatio = 1 / (125 * 2) * 2 * Math.PI; //multiply SM value by this number and get arm position in radians
-        public static final double kArmZeroCosineOffset = - Math.PI / 6; //radians to add to converted arm position to get real-world arm position (starts at ~30deg angle)
-        public static final ArmFeedforward kArmFeedforward = new ArmFeedforward(0,0.45,0,0);//(0.099761, 0.45585, .086, 0.0016816);
-        public static final RevPIDGains kArmPositionGains = new RevPIDGains(1, 0.0, 0.0);
-        public static final TrapezoidProfile.Constraints kArmMotionConstraint = new TrapezoidProfile.Constraints(2.0, 2.0);
-
-        public static final double kHomePosition = 0.0;
-        public static final double kScoringPosition = -5;
-        public static final double kIntakePosition = -8;
-        public static final double kFeederPosition = -12;
-        /////////////////////////////////////////////////////////////////////
-        
+        public static final int armMotorID = 13;
+                
         // PID coefficients
         public static final double armKP = 0.0000; 
         public static final double armKI = 0.000000;
@@ -199,8 +181,9 @@ public final class Constants {
         public static final int armMaxAcc = 1000;
         public static final double armAllowedErr = .25;
     }
-    // 1 unit = 0.2inches of travel
+    
     public static final class ElevatorConstants {
+        // 1 unit = 0.2inches of travel
         public static final int elevatorMotorID = 14;
         public static final int elevatorSensorID = 0;
         
