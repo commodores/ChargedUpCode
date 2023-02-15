@@ -280,32 +280,6 @@
         "vgap": 16.0,
         "titleType": 1,
         "tiles": {
-          "2,1": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Arm D Gain",
-              "_title": "/SmartDashboard/Arm D Gain",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "1,1": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Arm I Gain",
-              "_title": "/SmartDashboard/Arm I Gain",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
           "0,0": {
             "size": [
               2,
@@ -331,45 +305,6 @@
               "_glyph": 148,
               "_showGlyph": false
             }
-          },
-          "0,1": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Arm P Gain",
-              "_title": "SmartDashboard/Arm P Gain",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "3,1": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Arm Feed Forward",
-              "_title": "SmartDashboard/Arm Feed Forward",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "3,2": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Test Arm Position",
-              "_title": "/SmartDashboard/Test Arm Position",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
           }
         }
       }
@@ -385,19 +320,6 @@
         "vgap": 16.0,
         "titleType": 1,
         "tiles": {
-          "2,1": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Elevator D Gain",
-              "_title": "/SmartDashboard/Elevator D Gain",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
           "0,0": {
             "size": [
               2,
@@ -411,19 +333,6 @@
               "_showGlyph": false
             }
           },
-          "1,1": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Elevator I Gain",
-              "_title": "/SmartDashboard/Elevator I Gain",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
           "2,0": {
             "size": [
               2,
@@ -433,32 +342,6 @@
               "_type": "Text View",
               "_source0": "network_table:///SmartDashboard/Elevator Position",
               "_title": "/SmartDashboard/Elevator Position",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "3,1": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Elevator Feed Forward",
-              "_title": "SmartDashboard/Elevator Feed Forward",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "0,1": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Elevator P Gain",
-              "_title": "SmartDashboard/Elevator P Gain",
               "_glyph": 148,
               "_showGlyph": false
             }
@@ -511,18 +394,18 @@
         "tiles": {
           "0,0": {
             "size": [
-              7,
-              5
+              6,
+              4
             ],
             "content": {
               "_type": "Field",
               "_source0": "network_table:///SmartDashboard/Field",
-              "_title": "/SmartDashboard/Field",
-              "_glyph": 18,
+              "_title": "SmartDashboard/Field",
+              "_glyph": 148,
               "_showGlyph": false,
               "Game/Game": "A2023_Charged_Up",
               "Visuals/Robot Icon Size": 50.0,
-              "Visuals/Show Outside Circles": false,
+              "Visuals/Show Outside Circles": true,
               "Colors/Estimated Vision Position": "#FFFFFFFF",
               "Colors/Actual Pos": "#FFFFFFFF"
             }
@@ -559,9 +442,9 @@
     }
   ],
   "windowGeometry": {
-    "x": -8.0,
-    "y": -8.0,
-    "width": 1936.0,
-    "height": 1048.0
+    "x": -7.199999809265137,
+    "y": -7.199999809265137,
+    "width": 1550.4000244140625,
+    "height": 830.4000244140625
   }
 }
