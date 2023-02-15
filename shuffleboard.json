@@ -357,6 +357,19 @@
               "_glyph": 148,
               "_showGlyph": false
             }
+          },
+          "3,2": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Test Arm Position",
+              "_title": "/SmartDashboard/Test Arm Position",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
           }
         }
       }
