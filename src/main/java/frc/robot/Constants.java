@@ -173,9 +173,9 @@ public final class Constants {
 
         public static final double kArmGearRatio = 1 / (125 * 2) * 2 * Math.PI; //multiply SM value by this number and get arm position in radians
         public static final double kArmZeroCosineOffset = - Math.PI / 6; //radians to add to converted arm position to get real-world arm position (starts at ~30deg angle)
-        public static final ArmFeedforward kArmFeedforward = new ArmFeedforward(0.099761, 0.45585, .6, 0.0016816);
-        public static final RevPIDGains kArmPositionGains = new RevPIDGains(0.001, 0.0, 0.0);
-        public static final TrapezoidProfile.Constraints kArmMotionConstraint = new TrapezoidProfile.Constraints(3.0, 3.0);
+        public static final ArmFeedforward kArmFeedforward = new ArmFeedforward(0,0.45,0,0);//(0.099761, 0.45585, .086, 0.0016816);
+        public static final RevPIDGains kArmPositionGains = new RevPIDGains(1, 0.0, 0.0);
+        public static final TrapezoidProfile.Constraints kArmMotionConstraint = new TrapezoidProfile.Constraints(2.0, 2.0);
 
         public static final double kHomePosition = 0.0;
         public static final double kScoringPosition = -5;
