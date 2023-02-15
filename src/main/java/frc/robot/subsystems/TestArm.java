@@ -102,6 +102,7 @@ public class TestArm extends SubsystemBase {
   @Override
   public void periodic() { // This method will be called once per scheduler run
     SmartDashboard.putNumber("Test Arm Position", m_encoder.getPosition());
+    SmartDashboard.putNumber("Test Arm Feed Forward", feedforward);
   }
 
   @Override
