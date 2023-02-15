@@ -35,16 +35,16 @@ public class RobotContainer {
 
     /* Driver Buttons Controller 1 */
     private final JoystickButton zeroGyro = new JoystickButton(driver, XboxController.Button.kY.value);
-    private final JoystickButton robotCentric = new JoystickButton(driver, XboxController.Button.kX.value);
-    private final JoystickButton intake  = new JoystickButton(driver, XboxController.Button.kRightBumper.value);
-    private final JoystickButton release = new JoystickButton(driver, XboxController.Button.kLeftBumper.value);
+    private final JoystickButton robotCentric = new JoystickButton(driver, XboxController.Button.kX.value);    
+    private final JoystickButton raiseArm = new JoystickButton(driver, XboxController.Button.kRightBumper.value);
+    private final JoystickButton lowerArm = new JoystickButton(driver, XboxController.Button.kLeftBumper.value);
+    private final JoystickButton raiseElevator = new JoystickButton(driver, XboxController.Button.kStart.value);
+    private final JoystickButton lowerElevator = new JoystickButton(driver, XboxController.Button.kBack.value); 
     
 
-     /* Driver Buttons Controller 2 */
-    private final JoystickButton raiseArm = new JoystickButton(driverTwo, XboxController.Button.kRightBumper.value);
-    private final JoystickButton lowerArm = new JoystickButton(driverTwo, XboxController.Button.kLeftBumper.value);
-    private final JoystickButton raiseElevator = new JoystickButton(driverTwo, XboxController.Button.kStart.value);
-    private final JoystickButton lowerElevator = new JoystickButton(driverTwo, XboxController.Button.kBack.value);    
+    /* Driver Buttons Controller 2 */
+    private final JoystickButton intake  = new JoystickButton(driverTwo, XboxController.Button.kRightBumper.value);
+    private final JoystickButton release = new JoystickButton(driverTwo, XboxController.Button.kLeftBumper.value);  
     private final JoystickButton stow = new JoystickButton(driverTwo, XboxController.Button.kA.value);
     private final JoystickButton ground = new JoystickButton(driverTwo, XboxController.Button.kB.value);
     private final JoystickButton mid = new JoystickButton(driverTwo, XboxController.Button.kX.value);
@@ -61,8 +61,7 @@ public class RobotContainer {
     public final Elevator m_Elevator = new Elevator();
    
     private final SendableChooser<SequentialCommandGroup> autoChooser;
-    private final AutoCommands autos;
-    
+    private final AutoCommands autos;    
 
 
     /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -115,6 +114,7 @@ public class RobotContainer {
         ground.onTrue(new Ground(m_Arm, m_Elevator));
         mid.onTrue(new Mid(m_Arm, m_Elevator));
         high.onTrue(new High(m_Arm, m_Elevator));
+        shelf.onTrue(new Shelf(m_Arm, m_Elevator));
 
         raiseArm.onTrue(new InstantCommand(() -> m_Arm.manualArm(.2)));
         raiseArm.onFalse(new InstantCommand(() -> m_Arm.manualArm(0)));
