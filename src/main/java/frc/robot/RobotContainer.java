@@ -7,8 +7,10 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -23,8 +25,8 @@ import frc.robot.subsystems.*;
  */
 public class RobotContainer {
     /* Controllers */
-    private final Joystick driver = new Joystick(0);
-    private final Joystick driverTwo = new Joystick(1);
+    private final XboxController driver = new XboxController(0);
+    private final XboxController driverTwo = new XboxController(1);
 
     /* Drive Controls */
     private final int translationAxis = XboxController.Axis.kLeftY.value;
@@ -106,21 +108,38 @@ public class RobotContainer {
         release.onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(.5)));
         release.onFalse(new InstantCommand(() -> m_Intake.runIntakeSpeed(0)));
         
-        stow.onTrue(new Stow(m_Arm, m_Elevator));
-        ground.onTrue(new Ground(m_Arm, m_Elevator));
-        mid.onTrue(new Mid(m_Arm, m_Elevator));
-        high.onTrue(new High(m_Arm, m_Elevator));
+        //stow.onTrue(new Stow(m_Arm, m_Elevator));
+        //ground.onTrue(new Ground(m_Arm, m_Elevator));
+        //mid.onTrue(new Mid(m_Arm, m_Elevator));
+        //high.onTrue(new High(m_Arm, m_Elevator));
 
-        raiseArm.onTrue(new InstantCommand(() -> m_Arm.manualArm(.2)));
-        raiseArm.onFalse(new InstantCommand(() -> m_Arm.manualArm(0)));
-        lowerArm.onTrue(new InstantCommand(() -> m_Arm.manualArm(-.2)));
-        lowerArm.onFalse(new InstantCommand(() -> m_Arm.manualArm(0)));
+        //raiseArm.onTrue(new InstantCommand(() -> m_Arm.manualArm(.2)));
+        //raiseArm.onFalse(new InstantCommand(() -> m_Arm.manualArm(0)));
+        //lowerArm.onTrue(new InstantCommand(() -> m_Arm.manualArm(-.2)));
+        //lowerArm.onFalse(new InstantCommand(() -> m_Arm.manualArm(0)));
 
-        raiseElevator.onTrue(new InstantCommand(() -> m_Elevator.manualElevator(.5)));
-        raiseElevator.onFalse(new InstantCommand(() -> m_Elevator.manualElevator(0)));
-        lowerElevator.onTrue(new InstantCommand(() -> m_Elevator.manualElevator(-.5)));
-        lowerElevator.onFalse(new InstantCommand(() -> m_Elevator.manualElevator(0)));
-    
+        //raiseElevator.onTrue(new InstantCommand(() -> m_Elevator.manualElevator(.5)));
+        //raiseElevator.onFalse(new InstantCommand(() -> m_Elevator.manualElevator(0)));
+        //lowerElevator.onTrue(new InstantCommand(() -> m_Elevator.manualElevator(-.5)));
+        //lowerElevator.onFalse(new InstantCommand(() -> m_Elevator.manualElevator(0)));
+        
+
+
+        //set up arm preset positions
+        new JoystickButton(driverTwo, XboxController.Button.kA.value)
+            .onTrue(new InstantCommand(() -> m_TestArm.setTargetPosition(Constants.ArmConstants.kHomePosition)));
+        new JoystickButton(driverTwo, XboxController.Button.kX.value)
+            .onTrue(new InstantCommand(() -> m_TestArm.setTargetPosition(Constants.ArmConstants.kScoringPosition)));
+        new JoystickButton(driverTwo, XboxController.Button.kY.value)
+            .onTrue(new InstantCommand(() -> m_TestArm.setTargetPosition(Constants.ArmConstants.kIntakePosition)));
+        new JoystickButton(driverTwo, XboxController.Button.kB.value)
+            .onTrue(new InstantCommand(() -> m_TestArm.setTargetPosition(Constants.ArmConstants.kFeederPosition)));
+
+        //set up arm manual and auto functions
+        m_TestArm.setDefaultCommand(new RunCommand(() -> m_TestArm.runAutomatic(), m_TestArm));
+
+        new Trigger(() -> Math.abs(driverTwo.getRightTriggerAxis() - driverTwo.getLeftTriggerAxis()) > Constants.OIConstants.kArmManualDeadband).whileTrue(new RunCommand(() -> m_TestArm.runManual((driverTwo.getRightTriggerAxis() - driverTwo.getLeftTriggerAxis()) * Constants.OIConstants.kArmManualScale), m_TestArm));
+        
     }
 
     /**

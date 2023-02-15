@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.util.sendable.SendableBuilder;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class TestArm extends SubsystemBase {
   private CANSparkMax m_motor;
@@ -100,7 +101,7 @@ public class TestArm extends SubsystemBase {
 
   @Override
   public void periodic() { // This method will be called once per scheduler run
-    
+    SmartDashboard.putNumber("Test Arm Position", m_encoder.getPosition());
   }
 
   @Override
