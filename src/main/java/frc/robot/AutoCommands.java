@@ -90,6 +90,7 @@ public class AutoCommands {
             new PIDConstants(Constants.AutoConstants.kPThetaController, 0, 0),
             swerve::setModuleStates,
             eventMap,
+            true,
             swerve);
 
         return autoBuilder.fullAuto(pathGroup);
