@@ -27,7 +27,7 @@ public class PhotonCameraPose {
         photonCamera = new PhotonCamera(VisionConstants.kCameraName);
 
         // Create pose estimator
-        photonPoseEstimator = new PhotonPoseEstimator(fieldLayout, PoseStrategy.AVERAGE_BEST_TARGETS, photonCamera, VisionConstants.robotToCam);
+        photonPoseEstimator = new PhotonPoseEstimator(fieldLayout, PoseStrategy.LOWEST_AMBIGUITY, photonCamera, VisionConstants.robotToCam);
     }
 
     /**

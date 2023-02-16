@@ -155,10 +155,10 @@ public final class Constants {
     public static final class VisionConstants {
         // Cam mounted facing forward, half a meter forward of center, half a meter up from center.
         public static final Transform3d robotToCam = new Transform3d(
-                        new Translation3d(0.5, 0.0, 0.5),
+                        new Translation3d(0.127, 0.0, 0.3302),
                         new Rotation3d(0, 0, 0));
 
-        public static final String kCameraName = "Global_Shutter_Camera";
+        public static final String kCameraName = "Arducam_OV9281_USB_Camera";
     }
 
     public static final class ArmConstants {

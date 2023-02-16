@@ -68,7 +68,7 @@ public class AutoCommands {
         eventMap.put("intakeOff", new PrintCommand("Intake Off"));
         eventMap.put("turnToTarget", new PrintCommand("Turn to Target"));
         eventMap.put("shoot", new PrintCommand("Shoot"));
-        eventMap.put("event", new High(RobotContainer.m_Arm, RobotContainer.m_Elevator));
+       // eventMap.put("event", new High(RobotContainer.m_Arm, RobotContainer.m_Elevator));
         //eventMap.put("shooterStart", new ShooterSetRPM(5000));
         //eventMap.put("intakeDown", new IntakeDown());
         //eventMap.put("intakeOn", new IntakeRun());
