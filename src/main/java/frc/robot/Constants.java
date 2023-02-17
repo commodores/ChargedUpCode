@@ -164,6 +164,7 @@ public final class Constants {
     public static final class ArmConstants {
         
         public static final int armMotorID = 13;
+        public static final int armMotorIDTest = 93;
                 
         // PID coefficients
         public static final double armKP = 0.0000; 
@@ -180,6 +181,12 @@ public final class Constants {
         public static final int armMaxVel = 2000; // rpm
         public static final int armMaxAcc = 1500;
         public static final double armAllowedErr = .25;
+
+        //SysID
+        public static final double armKs = 0.0;
+        public static final double armKg = 0.0;
+        public static final double armKv = 0.0;
+        public static final double armKa = 0.0;
     }
     
     public static final class ElevatorConstants {
