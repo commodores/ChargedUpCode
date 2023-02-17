@@ -10,8 +10,11 @@ import frc.robot.Constants;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
+import com.revrobotics.SparkMaxLimitSwitch;
 import com.revrobotics.SparkMaxPIDController;
+import com.revrobotics.CANDigitalInput.LimitSwitchPolarity;
 import com.revrobotics.CANSparkMax.IdleMode;
+import com.revrobotics.CANSparkMax.SoftLimitDirection;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 
@@ -21,6 +24,7 @@ public class Arm extends SubsystemBase {
 
   private SparkMaxPIDController armPIDController;
   private RelativeEncoder armEncoder;
+  private SparkMaxLimitSwitch armLimit;
   
   double kP = Constants.ArmConstants.armKP,
     kI = Constants.ArmConstants.armKI,
@@ -43,9 +47,16 @@ public class Arm extends SubsystemBase {
     armMotor.setSmartCurrentLimit(30);
     armMotor.setIdleMode(IdleMode.kBrake);
 
+    armMotor.setSoftLimit(SoftLimitDirection.kForward, 5);
+    armMotor.setSoftLimit(SoftLimitDirection.kReverse, -60);
+
+    armMotor.enableSoftLimit(SoftLimitDirection.kForward, true);
+    armMotor.enableSoftLimit(SoftLimitDirection.kReverse, true);
+
     // initialze PID controller and encoder objects
     armPIDController = armMotor.getPIDController();
     armEncoder = armMotor.getEncoder();
+    armLimit = armMotor.getForwardLimitSwitch(SparkMaxLimitSwitch.Type.kNormallyOpen);
 
     // set PID coefficients
     armPIDController.setP(kP);
@@ -73,6 +84,7 @@ public class Arm extends SubsystemBase {
     armPIDController.setSmartMotionMaxAccel(maxAcc, smartMotionSlot);
     armPIDController.setSmartMotionAllowedClosedLoopError(allowedErr, smartMotionSlot);
 
+
     // display PID coefficients on SmartDashboard
     //SmartDashboard.putNumber("Arm P Gain", kP);
     //SmartDashboard.putNumber("Arm I Gain", kI);
@@ -98,17 +110,29 @@ public class Arm extends SubsystemBase {
     armMotor.set(speed);
   }
 
-  public double getOutputCurrent() {
+  public double getOutputCurrent(){
     return armMotor.getOutputCurrent();
   }
 
-  public double getPosition() {
+  public double getPosition(){
     return armEncoder.getPosition();
+  }
+
+  public void resetEncoder(){
+    armMotor.getEncoder().setPosition(0);
+  }
+
+  public boolean getLimitSwitch(){
+    return armLimit.isPressed();
   }
 
   @Override
   public void periodic() {
     SmartDashboard.putNumber("Arm Current", getOutputCurrent());
     SmartDashboard.putNumber("Arm Position", getPosition());
+
+    if(getLimitSwitch()){
+        armEncoder.setPosition(0);
+    }
   }
 }
