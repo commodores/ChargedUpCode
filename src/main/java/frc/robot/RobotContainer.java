@@ -119,12 +119,12 @@ public class RobotContainer {
 
         intake.onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(-1)));//----Right Bumper
         intake.onFalse(new InstantCommand(() -> m_Intake.runIntakeSpeed(-.01)));
-        release.onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(.4)));//----Left Bumper
+        release.onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(.25)));//----Left Bumper
         release.onFalse(new InstantCommand(() -> m_Intake.runIntakeSpeed(-.01)));
         
         stow.onTrue(new Stow(m_Arm, m_Elevator));//----B Button
         ground.onTrue(new Ground(m_Arm, m_Elevator));//----A Button
-        mid.onTrue(new Mid(m_Arm, m_Elevator));//----X Button
+        mid.onTrue(new HighShelf(m_Arm, m_Elevator));//----X Button
         high.onTrue(new High(m_Arm, m_Elevator));//----Y Button
         shelf.onTrue(new Shelf(m_Arm, m_Elevator));//----Start Button
 
