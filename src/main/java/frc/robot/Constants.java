@@ -87,7 +87,7 @@ public final class Constants {
         /** Meters per Second */
         public static final double maxSpeed = 4.5; //TODO: This must be tuned to specific robot
         /** Radians per Second */
-        public static final double maxAngularVelocity = 10.0; //TODO: This must be tuned to specific robot
+        public static final double maxAngularVelocity = 8.0;//10.0; //TODO: This must be tuned to specific robot
 
         /* Neutral Modes */
         public static final NeutralMode angleNeutralMode = NeutralMode.Coast;
@@ -164,14 +164,13 @@ public final class Constants {
     public static final class ArmConstants {
         
         public static final int armMotorID = 13;
-        public static final int armMotorIDTest = 93;
                 
         // PID coefficients
-        public static final double armKP = 0.0000; 
+        public static final double armKP = 2.4032e-08; 
         public static final double armKI = 0.000000;
         public static final double armKD = 0.0000; 
         public static final double armKIz = 0; 
-        public static final double armKFF = 0.0002;
+        public static final double armKFF = 0.0003;
         public static final double armKMaxOutput = 1; 
         public static final double armKMinOutput = -1;
         public static final double armMaxRPM = 5700;
@@ -183,10 +182,10 @@ public final class Constants {
         public static final double armAllowedErr = .25;
 
         //SysID
-        public static final double armKs = 0.0;
-        public static final double armKg = 0.0;
-        public static final double armKv = 0.0;
-        public static final double armKa = 0.0;
+        public static final double armKs = 0.099761;
+        public static final double armKg = 0.45585;
+        public static final double armKv = 0.085149;
+        public static final double armKa = 0.0016816;
     }
     
     public static final class ElevatorConstants {

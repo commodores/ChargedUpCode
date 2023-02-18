@@ -57,8 +57,6 @@ public class RobotContainer {
     public final static Intake m_Intake = new Intake();
     public final static Arm m_Arm = new Arm();
     public final static Elevator m_Elevator = new Elevator();
-
-    public final static TestArm m_TestArm = new TestArm();
    
     private final SendableChooser<SequentialCommandGroup> autoChooser;
     private final AutoCommands autos;    
@@ -71,7 +69,7 @@ public class RobotContainer {
                 s_Swerve, 
                 () -> -driver.getRawAxis(translationAxis), 
                 () -> -driver.getRawAxis(strafeAxis), 
-                () -> -driver.getRawAxis(rotationAxis), 
+                () -> -driver.getRawAxis(rotationAxis)*.75, 
                 () -> robotCentric.getAsBoolean()
             )
         );
@@ -120,15 +118,18 @@ public class RobotContainer {
         /* Driver 2 Buttons */        
 
         intake.onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(-1)));//----Right Bumper
-        intake.onFalse(new InstantCommand(() -> m_Intake.runIntakeSpeed(0)));
-        release.onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(.3)));//----Left Bumper
-        release.onFalse(new InstantCommand(() -> m_Intake.runIntakeSpeed(0)));
+        intake.onFalse(new InstantCommand(() -> m_Intake.runIntakeSpeed(-.01)));
+        release.onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(.4)));//----Left Bumper
+        release.onFalse(new InstantCommand(() -> m_Intake.runIntakeSpeed(-.01)));
         
         stow.onTrue(new Stow(m_Arm, m_Elevator));//----B Button
         ground.onTrue(new Ground(m_Arm, m_Elevator));//----A Button
         mid.onTrue(new Mid(m_Arm, m_Elevator));//----X Button
         high.onTrue(new High(m_Arm, m_Elevator));//----Y Button
-        shelf.onTrue(new Shelf(m_Arm, m_Elevator));//----Start Button   
+        shelf.onTrue(new Shelf(m_Arm, m_Elevator));//----Start Button
+
+        //raiseArm.onTrue(new InstantCommand(() -> m_TestArm.setGoal(0)));
+        //lowerArm.onTrue(new InstantCommand(() -> m_TestArm.setGoal(-10)));
         
     }
 

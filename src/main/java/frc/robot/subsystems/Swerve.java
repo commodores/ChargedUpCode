@@ -59,10 +59,10 @@ public class Swerve extends SubsystemBase {
 
         //swerveOdometry = new SwerveDriveOdometry(Constants.Swerve.swerveKinematics, getYaw(), getModulePositions());
         poseEstimator = new SwerveDrivePoseEstimator(Constants.Swerve.swerveKinematics, getYaw(), getModulePositions(), new Pose2d(),
-                                new MatBuilder<N3, N1>(Nat.N3(), Nat.N1()).fill(0.1, 0.1, 0.1), // State measurement
+                                new MatBuilder<N3, N1>(Nat.N3(), Nat.N1()).fill(0.08, 0.08, 0.08), // State measurement
                                                                                                 // standard deviations.
                                                                                                 // X, Y, theta.
-                                new MatBuilder<N3, N1>(Nat.N3(), Nat.N1()).fill(4, 4, 4)); // Vision measurement
+                                new MatBuilder<N3, N1>(Nat.N3(), Nat.N1()).fill(5, 5, 5)); // Vision measurement
                                                                                                  // standard deviations.
                                                                                                  // X, Y, theta.);
         

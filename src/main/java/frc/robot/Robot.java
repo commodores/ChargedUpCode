@@ -37,6 +37,7 @@ public class Robot extends TimedRobot {
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
     PathPlannerServer.startServer(5811); // 5811 = port number. adjust this according to your needs
+    m_robotContainer.m_Arm.setPosition(0);
   }
 
   /**

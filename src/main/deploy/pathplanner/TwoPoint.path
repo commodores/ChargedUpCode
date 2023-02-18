@@ -1,0 +1,193 @@
+{
+  "waypoints": [
+    {
+      "anchorPoint": {
+        "x": 14.638940720189131,
+        "y": 4.87527109669604
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 14.61967087395713,
+        "y": 4.86563617358004
+      },
+      "holonomicAngle": 0.6437457141754201,
+      "isReversal": false,
+      "velOverride": null,
+      "isLocked": false,
+      "isStopPoint": false,
+      "stopEvent": {
+        "names": [],
+        "executionBehavior": "parallel",
+        "waitBehavior": "after",
+        "waitTime": 0
+      }
+    },
+    {
+      "anchorPoint": {
+        "x": 14.648575643305135,
+        "y": 4.87527109669604
+      },
+      "prevControl": {
+        "x": 14.629305797073133,
+        "y": 4.831913942674039
+      },
+      "nextControl": {
+        "x": 14.667845489537136,
+        "y": 4.918628250718041
+      },
+      "holonomicAngle": 0,
+      "isReversal": false,
+      "velOverride": null,
+      "isLocked": false,
+      "isStopPoint": true,
+      "stopEvent": {
+        "names": [],
+        "executionBehavior": "parallel",
+        "waitBehavior": "none",
+        "waitTime": 0
+      }
+    },
+    {
+      "anchorPoint": {
+        "x": 12.62524178894512,
+        "y": 4.856001250464041
+      },
+      "prevControl": {
+        "x": 14.060845333229128,
+        "y": 4.856001250464041
+      },
+      "nextControl": {
+        "x": 11.266717629589117,
+        "y": 4.856001250464041
+      },
+      "holonomicAngle": 180.0,
+      "isReversal": false,
+      "velOverride": null,
+      "isLocked": false,
+      "isStopPoint": false,
+      "stopEvent": {
+        "names": [],
+        "executionBehavior": "parallel",
+        "waitBehavior": "none",
+        "waitTime": 0
+      }
+    },
+    {
+      "anchorPoint": {
+        "x": 9.474621930013091,
+        "y": 4.595858326332038
+      },
+      "prevControl": {
+        "x": 9.580843346113813,
+        "y": 4.836626869493672
+      },
+      "nextControl": {
+        "x": 9.33009808327309,
+        "y": 4.268270940388034
+      },
+      "holonomicAngle": -179.99999999934153,
+      "isReversal": false,
+      "velOverride": null,
+      "isLocked": false,
+      "isStopPoint": true,
+      "stopEvent": {
+        "names": [],
+        "executionBehavior": "parallel",
+        "waitBehavior": "none",
+        "waitTime": 0
+      }
+    },
+    {
+      "anchorPoint": {
+        "x": 12.62524178894512,
+        "y": 4.6343980187960385
+      },
+      "prevControl": {
+        "x": 11.787003477853112,
+        "y": 4.5958583263320385
+      },
+      "nextControl": {
+        "x": 13.297736078732001,
+        "y": 4.665317296487389
+      },
+      "holonomicAngle": 0,
+      "isReversal": false,
+      "velOverride": null,
+      "isLocked": false,
+      "isStopPoint": false,
+      "stopEvent": {
+        "names": [],
+        "executionBehavior": "parallel",
+        "waitBehavior": "none",
+        "waitTime": 0
+      }
+    },
+    {
+      "anchorPoint": {
+        "x": 14.648575643305135,
+        "y": 4.88490601981204
+      },
+      "prevControl": {
+        "x": 14.003035794533128,
+        "y": 4.759652019304039
+      },
+      "nextControl": null,
+      "holonomicAngle": 0,
+      "isReversal": false,
+      "velOverride": null,
+      "isLocked": false,
+      "isStopPoint": false,
+      "stopEvent": {
+        "names": [],
+        "executionBehavior": "parallel",
+        "waitBehavior": "none",
+        "waitTime": 0
+      }
+    }
+  ],
+  "markers": [
+    {
+      "position": 0.0,
+      "names": [
+        "release"
+      ]
+    },
+    {
+      "position": 0.49454545454545945,
+      "names": [
+        "stowArm"
+      ]
+    },
+    {
+      "position": 0.9600000000000033,
+      "names": [
+        "groundArm"
+      ]
+    },
+    {
+      "position": 1.9199999999999,
+      "names": [
+        "runIntake"
+      ]
+    },
+    {
+      "position": 4.0,
+      "names": [
+        "midShot",
+        "stop"
+      ]
+    },
+    {
+      "position": 2.2399999999998577,
+      "names": [
+        "stowArm"
+      ]
+    },
+    {
+      "position": 0.0,
+      "names": [
+        "autoWait"
+      ]
+    }
+  ]
+}

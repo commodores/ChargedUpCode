@@ -47,16 +47,17 @@ public class Arm extends SubsystemBase {
     armMotor.setSmartCurrentLimit(30);
     armMotor.setIdleMode(IdleMode.kBrake);
 
-    armMotor.setSoftLimit(SoftLimitDirection.kForward, 5);
-    armMotor.setSoftLimit(SoftLimitDirection.kReverse, -60);
+    //armMotor.setSoftLimit(SoftLimitDirection.kForward, 5);
+    armMotor.setSoftLimit(SoftLimitDirection.kReverse, -61);
 
-    armMotor.enableSoftLimit(SoftLimitDirection.kForward, true);
+    //armMotor.enableSoftLimit(SoftLimitDirection.kForward, true);
     armMotor.enableSoftLimit(SoftLimitDirection.kReverse, true);
 
     // initialze PID controller and encoder objects
     armPIDController = armMotor.getPIDController();
     armEncoder = armMotor.getEncoder();
     armLimit = armMotor.getForwardLimitSwitch(SparkMaxLimitSwitch.Type.kNormallyOpen);
+    armLimit.enableLimitSwitch(true);
 
     // set PID coefficients
     armPIDController.setP(kP);
@@ -83,6 +84,8 @@ public class Arm extends SubsystemBase {
     armPIDController.setSmartMotionMinOutputVelocity(minVel, smartMotionSlot);
     armPIDController.setSmartMotionMaxAccel(maxAcc, smartMotionSlot);
     armPIDController.setSmartMotionAllowedClosedLoopError(allowedErr, smartMotionSlot);
+
+    
 
 
     // display PID coefficients on SmartDashboard
@@ -130,9 +133,10 @@ public class Arm extends SubsystemBase {
   public void periodic() {
     SmartDashboard.putNumber("Arm Current", getOutputCurrent());
     SmartDashboard.putNumber("Arm Position", getPosition());
+    SmartDashboard.putBoolean("Arm Limit", getLimitSwitch());
 
     if(getLimitSwitch()){
-        armEncoder.setPosition(0);
+        resetEncoder();;
     }
   }
 }

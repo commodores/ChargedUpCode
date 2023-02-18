@@ -12,8 +12,8 @@ import frc.robot.subsystems.Elevator;
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
 public class Ground extends ParallelCommandGroup {
-  private final Elevator m_Elevator;
-  private final Arm m_Arm;
+  public final Elevator m_Elevator;
+  public final Arm m_Arm;
   /** Creates a new Ground. */
   public Ground(Arm armSusbsystem, Elevator elevatorSubsystem) {
     // Add your commands in the addCommands() call, e.g.

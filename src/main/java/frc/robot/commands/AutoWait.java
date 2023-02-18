@@ -5,15 +5,13 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Arm;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 
-public class GroundArm extends CommandBase {
-  private final Arm m_Arm;
-  /** Creates a new GroundArm. */
-  public GroundArm(Arm subsystem) {
+public class AutoWait extends CommandBase {
+  /** Creates a new AutoWait. */
+  public AutoWait() {
     // Use addRequirements() here to declare subsystem dependencies.
-    m_Arm = subsystem;
-    addRequirements(m_Arm);
+    new WaitCommand(1); //wait 1 second before continuing
   }
 
   // Called when the command is initially scheduled.
@@ -23,7 +21,7 @@ public class GroundArm extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_Arm.setPosition(-61);//-59.4
+
   }
 
   // Called once the command ends or is interrupted.

@@ -11,7 +11,7 @@
         "vgap": 16.0,
         "titleType": 1,
         "tiles": {
-          "2,0": {
+          "0,0": {
             "size": [
               3,
               1
@@ -24,46 +24,7 @@
               "_showGlyph": false
             }
           },
-          "0,0": {
-            "size": [
-              2,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///FMSInfo/EventName",
-              "_title": "/FMSInfo/EventName",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
           "0,1": {
-            "size": [
-              2,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///FMSInfo/MatchNumber",
-              "_title": "/FMSInfo/MatchNumber",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "2,1": {
-            "size": [
-              2,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///FMSInfo/StationNumber",
-              "_title": "/FMSInfo/StationNumber",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "5,0": {
             "size": [
               2,
               1
@@ -72,19 +33,6 @@
               "_type": "ComboBox Chooser",
               "_source0": "network_table:///SmartDashboard/Auto Selector",
               "_title": "/SmartDashboard/Auto Selector",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "7,0": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Toggle Switch",
-              "_source0": "network_table:///FMSInfo/IsRedAlliance",
-              "_title": "FMSInfo/IsRedAlliance",
               "_glyph": 148,
               "_showGlyph": false
             }
@@ -303,6 +251,21 @@
               "_glyph": 148,
               "_showGlyph": false
             }
+          },
+          "3,1": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Boolean Box",
+              "_source0": "network_table:///SmartDashboard/Arm Limit",
+              "_title": "/SmartDashboard/Arm Limit",
+              "_glyph": 148,
+              "_showGlyph": false,
+              "Colors/Color when true": "#7CFC00FF",
+              "Colors/Color when false": "#8B0000FF"
+            }
           }
         }
       }
@@ -423,7 +386,7 @@
   "windowGeometry": {
     "x": 1537.0,
     "y": -558.0,
-    "width": 1364.0,
-    "height": 718.0
+    "width": 1368.0,
+    "height": 728.0
   }
 }

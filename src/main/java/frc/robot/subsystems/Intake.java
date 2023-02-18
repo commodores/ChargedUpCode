@@ -28,6 +28,8 @@ public class Intake extends SubsystemBase {
     intakeMotor.restoreFactoryDefaults();
     intakeMotor.setSmartCurrentLimit(30);
     intakeMotor.setIdleMode(IdleMode.kBrake);
+
+    runIntakeSpeed(-.01);
     
   }
 

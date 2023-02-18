@@ -13,9 +13,8 @@ import com.pathplanner.lib.auto.SwerveAutoBuilder;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import frc.robot.commands.High;
-import frc.robot.commands.Nothing;
-import frc.robot.subsystems.Swerve;
+import frc.robot.commands.*;
+import frc.robot.subsystems.*;;
 
 public class AutoCommands {
 
@@ -57,17 +56,30 @@ public class AutoCommands {
              getCommand(outOfComCenter)
          ));
 
+         //TwoPoint/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+         List<PathPlannerTrajectory> TwoPoint = PathPlanner.loadPathGroup("TwoPoint", new PathConstraints(4, 3));
+         autos.put("TwoPoint", new SequentialCommandGroup(
+             getCommand(TwoPoint)
+         ));
+
 
        // eventMap.put("BarrelMarker1", new PrintCommand("You are Barrel Racing!!!"));
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
+        eventMap.put("runIntake", new AutoIntake(RobotContainer.m_Intake));
+        eventMap.put("release", new AutoRelease(RobotContainer.m_Intake));
+        eventMap.put("stop", new AutoStop(RobotContainer.m_Intake));
+        eventMap.put("groundArm", new Ground(RobotContainer.m_Arm, RobotContainer.m_Elevator));
+        eventMap.put("stowArm", new Stow(RobotContainer.m_Arm, RobotContainer.m_Elevator));
+        eventMap.put("highShot", new High(RobotContainer.m_Arm, RobotContainer.m_Elevator));
+        eventMap.put("midShot", new Mid(RobotContainer.m_Arm, RobotContainer.m_Elevator));
+        eventMap.put("autoWait", new AutoWait());
+        /*
         eventMap.put("shooterStrt", new PrintCommand("Start Shooter"));
         eventMap.put("intakeDown", new PrintCommand("Intake Down"));
         eventMap.put("intakeOn", new PrintCommand("Intake On"));
         eventMap.put("intakeOff", new PrintCommand("Intake Off"));
         eventMap.put("turnToTarget", new PrintCommand("Turn to Target"));
-        eventMap.put("shoot", new PrintCommand("Shoot"));
+        eventMap.put("shoot", new PrintCommand("Shoot")); */
        // eventMap.put("event", new High(RobotContainer.m_Arm, RobotContainer.m_Elevator));
         //eventMap.put("shooterStart", new ShooterSetRPM(5000));
         //eventMap.put("intakeDown", new IntakeDown());
