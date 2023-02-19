@@ -133,6 +133,9 @@ public final class Constants {
             public static final SwerveModuleConstants constants = 
                 new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
         }
+
+        public static final double speedMod = 0.5;
+        public static final double balanceSpeedMod = 0.4;
     }
 
     public static final class AutoConstants { //TODO: The below constants are used in the example auto, and must be tuned to specific robot
@@ -145,6 +148,9 @@ public final class Constants {
         public static final double kPYController = 1;
         public static final double kPXandYControllers = 1;
         public static final double kPThetaController = 1;
+
+        public static final double maxPlatformPositivePitch = 1;
+        public static final double maxPlatformNegativePitch = -1;
     
         /* Constraint for the motion profilied robot angle controller */
         public static final TrapezoidProfile.Constraints kThetaControllerConstraints =
