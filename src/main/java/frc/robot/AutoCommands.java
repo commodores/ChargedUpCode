@@ -59,7 +59,9 @@ public class AutoCommands {
          //TwoPoint/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
          List<PathPlannerTrajectory> TwoPoint = PathPlanner.loadPathGroup("TwoPoint", new PathConstraints(4, 3));
          autos.put("TwoPoint", new SequentialCommandGroup(
-             getCommand(TwoPoint)
+            new High(RobotContainer.m_Arm, RobotContainer.m_Elevator),
+            new AutoRelease(RobotContainer.m_Intake).withTimeout(0.1),
+            getCommand(TwoPoint)
          ));
 
 
