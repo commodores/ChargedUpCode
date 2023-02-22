@@ -23,7 +23,7 @@ public class HighElevator extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_Elevator.setPosition(197.6);
+    m_Elevator.setPosition(83);
   }
 
   // Called once the command ends or is interrupted.
