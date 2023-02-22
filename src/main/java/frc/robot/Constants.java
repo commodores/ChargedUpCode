@@ -172,11 +172,11 @@ public final class Constants {
         public static final int armMotorID = 13;
                 
         // PID coefficients
-        public static final double armKP = 2.4032e-08; 
+        public static final double armKP = 0; 
         public static final double armKI = 0.000000;
         public static final double armKD = 0.0000; 
         public static final double armKIz = 0; 
-        public static final double armKFF = 0.0003;
+        public static final double armKFF = 0.0004;
         public static final double armKMaxOutput = 1; 
         public static final double armKMinOutput = -1;
         public static final double armMaxRPM = 5700;
@@ -204,7 +204,7 @@ public final class Constants {
         public static final double elevatorKI = 0.00000;
         public static final double elevatorKD = 0; 
         public static final double elevatorKIz = 0; 
-        public static final double elevatorKFF = 0.0005; 
+        public static final double elevatorKFF = 0.0006; 
         public static final double elevatorKMaxOutput = 1; 
         public static final double elevatorKMinOutput = -1;
         public static final double elevatorMaxRPM = 5700;

@@ -23,7 +23,7 @@ public class ShelfElevator extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_Elevator.setPosition(100);
+    m_Elevator.setPosition(120);
   }
 
   // Called once the command ends or is interrupted.

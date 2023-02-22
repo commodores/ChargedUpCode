@@ -47,11 +47,11 @@ public class Elevator extends SubsystemBase {
     elevatorMotor.setSmartCurrentLimit(30);
     elevatorMotor.setIdleMode(IdleMode.kBrake);
 
-    elevatorMotor.setSoftLimit(SoftLimitDirection.kForward, 119);
-    //elevatorMotor.setSoftLimit(SoftLimitDirection.kReverse, 0);
+    elevatorMotor.setSoftLimit(SoftLimitDirection.kForward, 126);
+    elevatorMotor.setSoftLimit(SoftLimitDirection.kReverse, 0);
 
     elevatorMotor.enableSoftLimit(SoftLimitDirection.kForward, true);
-    //elevatorMotor.enableSoftLimit(SoftLimitDirection.kReverse, true);
+    elevatorMotor.enableSoftLimit(SoftLimitDirection.kReverse, true);
 
     // initialze PID controller and encoder objects
     elevatorPIDController = elevatorMotor.getPIDController();
@@ -132,9 +132,9 @@ public class Elevator extends SubsystemBase {
     SmartDashboard.putNumber("Elevator Position", getPosition());
     SmartDashboard.putBoolean("Elevator Limit", getLimitSwitch());
 
-    if(getLimitSwitch()){
-      resetEncoder();
-    }
+    //if(getLimitSwitch()){
+    //  resetEncoder();
+    //}
   }
 
     /*

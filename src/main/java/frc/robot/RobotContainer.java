@@ -118,9 +118,9 @@ public class RobotContainer {
         /* Driver 2 Buttons */        
 
         intake.onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(-1)));//----Right Bumper
-        intake.onFalse(new InstantCommand(() -> m_Intake.runIntakeSpeed(-.01)));
-        release.onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(.25)));//----Left Bumper
-        release.onFalse(new InstantCommand(() -> m_Intake.runIntakeSpeed(-.01)));
+        intake.onFalse(new InstantCommand(() -> m_Intake.runIntakeSpeed(-.02)));
+        release.onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(1)));//----Left Bumper
+        release.onFalse(new InstantCommand(() -> m_Intake.runIntakeSpeed(-.02)));
         
         stow.onTrue(new Stow(m_Arm, m_Elevator));//----B Button
         ground.onTrue(new Ground(m_Arm, m_Elevator));//----A Button
