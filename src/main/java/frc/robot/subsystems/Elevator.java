@@ -20,6 +20,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 public class Elevator extends SubsystemBase {
 
   private final CANSparkMax elevatorMotor;
+  private SparkMaxLimitSwitch elevatorLimit;
 
   private SparkMaxPIDController elevatorPIDController;
   private RelativeEncoder elevatorEncoder;
@@ -46,17 +47,17 @@ public class Elevator extends SubsystemBase {
     elevatorMotor.setSmartCurrentLimit(30);
     elevatorMotor.setIdleMode(IdleMode.kBrake);
 
-    elevatorMotor.setSoftLimit(SoftLimitDirection.kForward, 200);
-    elevatorMotor.setSoftLimit(SoftLimitDirection.kReverse, 0);
+    elevatorMotor.setSoftLimit(SoftLimitDirection.kForward, 119);
+    //elevatorMotor.setSoftLimit(SoftLimitDirection.kReverse, 0);
 
     elevatorMotor.enableSoftLimit(SoftLimitDirection.kForward, true);
-    elevatorMotor.enableSoftLimit(SoftLimitDirection.kReverse, true);
+    //elevatorMotor.enableSoftLimit(SoftLimitDirection.kReverse, true);
 
     // initialze PID controller and encoder objects
     elevatorPIDController = elevatorMotor.getPIDController();
     elevatorEncoder = elevatorMotor.getEncoder();
-    //elevatorLimit = elevatorMotor.getReverseLimitSwitch(SparkMaxLimitSwitch.Type.kNormallyClosed);
-    //elevatorLimit.enableLimitSwitch(true);
+    elevatorLimit = elevatorMotor.getReverseLimitSwitch(SparkMaxLimitSwitch.Type.kNormallyOpen);
+    elevatorLimit.enableLimitSwitch(true);
 
     // set PID coefficients
     elevatorPIDController.setP(kP);
@@ -117,15 +118,24 @@ public class Elevator extends SubsystemBase {
     return elevatorEncoder.getPosition();
   }
 
-  //public boolean getLimitSwitch(){
-  //  return elevatorLimit.isPressed();
-  //}
+  public void resetEncoder(){
+    elevatorMotor.getEncoder().setPosition(0);
+  }
+
+  public boolean getLimitSwitch(){
+    return elevatorLimit.isPressed();
+  }
 
   @Override
   public void periodic() {
     SmartDashboard.putNumber("Elevator Current", getOutputCurrent());
     SmartDashboard.putNumber("Elevator Position", getPosition());
-    //SmartDashboard.putBoolean("Elevator Limit", getLimitSwitch());
+    SmartDashboard.putBoolean("Elevator Limit", getLimitSwitch());
+
+    if(getLimitSwitch()){
+      resetEncoder();
+    }
+  }
 
     /*
     // This method will be called once per scheduler run
@@ -171,5 +181,5 @@ public class Elevator extends SubsystemBase {
     SmartDashboard.putNumber("SetPoint", setPoint);
     SmartDashboard.putNumber("Output", elevatorMotor.getAppliedOutput());
     */
-  }
+  
 }
