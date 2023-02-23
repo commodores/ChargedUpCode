@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -20,11 +21,9 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 public class Elevator extends SubsystemBase {
 
   private final CANSparkMax elevatorMotor;
-  private SparkMaxLimitSwitch elevatorLimit;
 
   private SparkMaxPIDController elevatorPIDController;
   private RelativeEncoder elevatorEncoder;
-  //private SparkMaxLimitSwitch elevatorLimit;
   
   double kP = Constants.ElevatorConstants.elevatorKP,
     kI = Constants.ElevatorConstants.elevatorKI,
@@ -48,16 +47,15 @@ public class Elevator extends SubsystemBase {
     elevatorMotor.setIdleMode(IdleMode.kBrake);
 
     elevatorMotor.setSoftLimit(SoftLimitDirection.kForward, 126);
-    elevatorMotor.setSoftLimit(SoftLimitDirection.kReverse, 0);
+    //elevatorMotor.setSoftLimit(SoftLimitDirection.kReverse, 0);
 
     elevatorMotor.enableSoftLimit(SoftLimitDirection.kForward, true);
-    elevatorMotor.enableSoftLimit(SoftLimitDirection.kReverse, true);
+    //elevatorMotor.enableSoftLimit(SoftLimitDirection.kReverse, true);
 
     // initialze PID controller and encoder objects
     elevatorPIDController = elevatorMotor.getPIDController();
     elevatorEncoder = elevatorMotor.getEncoder();
-    elevatorLimit = elevatorMotor.getReverseLimitSwitch(SparkMaxLimitSwitch.Type.kNormallyOpen);
-    elevatorLimit.enableLimitSwitch(true);
+    
 
     // set PID coefficients
     elevatorPIDController.setP(kP);
@@ -122,19 +120,11 @@ public class Elevator extends SubsystemBase {
     elevatorMotor.getEncoder().setPosition(0);
   }
 
-  public boolean getLimitSwitch(){
-    return elevatorLimit.isPressed();
-  }
 
   @Override
   public void periodic() {
     SmartDashboard.putNumber("Elevator Current", getOutputCurrent());
     SmartDashboard.putNumber("Elevator Position", getPosition());
-    SmartDashboard.putBoolean("Elevator Limit", getLimitSwitch());
-
-    //if(getLimitSwitch()){
-    //  resetEncoder();
-    //}
   }
 
     /*

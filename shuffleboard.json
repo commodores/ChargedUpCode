@@ -320,21 +320,6 @@
               "_showGlyph": false
             }
           },
-          "3,1": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Boolean Box",
-              "_source0": "network_table:///SmartDashboard/Elevator Limit",
-              "_title": "/SmartDashboard/Elevator Limit",
-              "_glyph": 148,
-              "_showGlyph": false,
-              "Colors/Color when true": "#7CFC00FF",
-              "Colors/Color when false": "#8B0000FF"
-            }
-          },
           "5,1": {
             "size": [
               2,
@@ -344,6 +329,19 @@
               "_type": "Text View",
               "_source0": "network_table:///SmartDashboard/Elevator Position",
               "_title": "/SmartDashboard/Elevator Position",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
+          },
+          "3,1": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Command",
+              "_source0": "network_table:///SmartDashboard/Reset Elevator",
+              "_title": "SmartDashboard/Reset Elevator",
               "_glyph": 148,
               "_showGlyph": false
             }

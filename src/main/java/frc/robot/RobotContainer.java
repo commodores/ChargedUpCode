@@ -89,6 +89,8 @@ public class RobotContainer {
         }
     
         SmartDashboard.putData("Auto Selector", autoChooser);
+
+        SmartDashboard.putData("Reset Elevator", new ResetElevator(m_Elevator));
     
         // Configure the button bindings
         configureButtonBindings();
@@ -106,21 +108,21 @@ public class RobotContainer {
 
         zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroGyro()));//----Y Button
         
-        raiseArm.onTrue(new InstantCommand(() -> m_Arm.manualArm(.3)));//----Right Bumper
-        raiseArm.onFalse(new InstantCommand(() -> m_Arm.manualArm(0)));
-        lowerArm.onTrue(new InstantCommand(() -> m_Arm.manualArm(-.3)));//----Left Bumper
-        lowerArm.onFalse(new InstantCommand(() -> m_Arm.manualArm(0)));
+        raiseArm.onTrue(new ManualArm(m_Arm, .3));//----Right Bumper
+        raiseArm.onFalse(new ManualArm(m_Arm, 0));
+        lowerArm.onTrue(new ManualArm(m_Arm, -.3));//----Left Bumper
+        lowerArm.onFalse(new ManualArm(m_Arm, 0));
 
-        raiseElevator.onTrue(new InstantCommand(() -> m_Elevator.manualElevator(.5)));//----Start Button
-        raiseElevator.onFalse(new InstantCommand(() -> m_Elevator.manualElevator(0)));
-        lowerElevator.onTrue(new InstantCommand(() -> m_Elevator.manualElevator(-.5)));//----Back Button
-        lowerElevator.onFalse(new InstantCommand(() -> m_Elevator.manualElevator(0)));
+        raiseElevator.onTrue(new ManualElevator(m_Elevator, .5));//----Start Button
+        raiseElevator.onFalse(new ManualElevator(m_Elevator, 0));
+        lowerElevator.onTrue(new ManualElevator(m_Elevator, -.5));//----Back Button
+        lowerElevator.onFalse(new ManualElevator(m_Elevator, 0));
         
         /* Driver 2 Buttons */        
 
         intake.onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(-1)));//----Right Bumper
         intake.onFalse(new InstantCommand(() -> m_Intake.runIntakeSpeed(-.02)));
-        release.onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(.3)));//----Left Bumper
+        release.onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(.2)));//----Left Bumper
         release.onFalse(new InstantCommand(() -> m_Intake.runIntakeSpeed(-.02)));
         
         stow.onTrue(new Stow(m_Arm, m_Elevator));//----B Button

@@ -5,16 +5,18 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Arm;
+import frc.robot.subsystems.Elevator;
 
-public class StowArm extends CommandBase {
-  private final Arm m_Arm;
+public class ManualElevator extends CommandBase {
+  private final Elevator m_Elevator;
+  double speed;
 
   /** Creates a new ShelfArm. */
-  public StowArm(Arm subsystem) {
+  public ManualElevator(Elevator subsystem, double speedManual) {
     // Use addRequirements() here to declare subsystem dependencies.
-    m_Arm = subsystem;
-    addRequirements(m_Arm);
+    m_Elevator = subsystem;
+    addRequirements(m_Elevator);
+    speed = speedManual;
   }
 
   // Called when the command is initially scheduled.
@@ -24,13 +26,13 @@ public class StowArm extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_Arm.setPosition(-5);
+    m_Elevator.manualElevator(speed);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    
+    m_Elevator.manualElevator(0);
   }
 
   // Returns true when the command should end.
