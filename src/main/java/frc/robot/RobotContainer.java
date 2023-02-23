@@ -91,6 +91,8 @@ public class RobotContainer {
         SmartDashboard.putData("Auto Selector", autoChooser);
 
         SmartDashboard.putData("Reset Elevator", new ResetElevator(m_Elevator));
+
+        SmartDashboard.putData("Balance", new AutoBalance(s_Swerve));
     
         // Configure the button bindings
         configureButtonBindings();

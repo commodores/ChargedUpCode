@@ -144,11 +144,11 @@ public final class Constants {
         public static final double kMaxAngularSpeedRadiansPerSecond = Math.PI;
         public static final double kMaxAngularSpeedRadiansPerSecondSquared = Math.PI;
     
-        public static final double kPXController = 3.5;
-        public static final double kPYController = 3.5;
-        public static final double kPXandYControllers = 3.5;
-        public static final double kPThetaController = 3.5;
-        
+        public static final double kPXController = 4;
+        public static final double kPYController = 4;
+        public static final double kPXandYControllers = 4;
+        public static final double kPThetaController = 4;
+
         public static final double maxPlatformPositivePitch = 0;
         public static final double maxPlatformNegativePitch = -2.5;
 

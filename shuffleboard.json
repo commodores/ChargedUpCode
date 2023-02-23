@@ -36,6 +36,19 @@
               "_glyph": 148,
               "_showGlyph": false
             }
+          },
+          "2,1": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Command",
+              "_source0": "network_table:///SmartDashboard/Balance",
+              "_title": "SmartDashboard/Balance",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
           }
         }
       }
@@ -426,6 +439,6 @@
     "x": -10.399999618530273,
     "y": 7.199999809265137,
     "width": 1550.4000244140625,
-    "height": 588.7999877929688
+    "height": 609.5999755859375
   }
 }
