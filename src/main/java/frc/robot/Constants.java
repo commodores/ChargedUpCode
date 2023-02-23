@@ -149,8 +149,8 @@ public final class Constants {
         public static final double kPXandYControllers = 4;
         public static final double kPThetaController = 4;
 
-        public static final double maxPlatformPositivePitch = 0;
-        public static final double maxPlatformNegativePitch = -2.5;
+        public static final double maxPlatformPositivePitch = 2;
+        public static final double maxPlatformNegativePitch = -5.2;
 
         public static final double desiredBalanceAngle = -1.6;
         public static final double balanceP = .5;
