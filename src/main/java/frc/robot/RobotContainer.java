@@ -50,10 +50,11 @@ public class RobotContainer {
     private final JoystickButton mid = new JoystickButton(driverTwo, XboxController.Button.kX.value);
     private final JoystickButton high = new JoystickButton(driverTwo, XboxController.Button.kY.value);
     private final JoystickButton shelf = new JoystickButton(driverTwo, XboxController.Button.kStart.value);
+    private final JoystickButton resetArm = new JoystickButton(driverTwo, XboxController.Button.kBack.value);
 
 
     /* Subsystems */
-    private final Swerve s_Swerve = new Swerve();
+    public final static Swerve s_Swerve = new Swerve();
     public final static Intake m_Intake = new Intake();
     public final static Arm m_Arm = new Arm();
     public final static Elevator m_Elevator = new Elevator();
@@ -105,9 +106,9 @@ public class RobotContainer {
 
         zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroGyro()));//----Y Button
         
-        raiseArm.onTrue(new InstantCommand(() -> m_Arm.manualArm(.2)));//----Right Bumper
+        raiseArm.onTrue(new InstantCommand(() -> m_Arm.manualArm(.3)));//----Right Bumper
         raiseArm.onFalse(new InstantCommand(() -> m_Arm.manualArm(0)));
-        lowerArm.onTrue(new InstantCommand(() -> m_Arm.manualArm(-.2)));//----Left Bumper
+        lowerArm.onTrue(new InstantCommand(() -> m_Arm.manualArm(-.3)));//----Left Bumper
         lowerArm.onFalse(new InstantCommand(() -> m_Arm.manualArm(0)));
 
         raiseElevator.onTrue(new InstantCommand(() -> m_Elevator.manualElevator(.5)));//----Start Button
@@ -119,14 +120,15 @@ public class RobotContainer {
 
         intake.onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(-1)));//----Right Bumper
         intake.onFalse(new InstantCommand(() -> m_Intake.runIntakeSpeed(-.02)));
-        release.onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(1)));//----Left Bumper
+        release.onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(.3)));//----Left Bumper
         release.onFalse(new InstantCommand(() -> m_Intake.runIntakeSpeed(-.02)));
         
         stow.onTrue(new Stow(m_Arm, m_Elevator));//----B Button
         ground.onTrue(new Ground(m_Arm, m_Elevator));//----A Button
-        mid.onTrue(new HighShelf(m_Arm, m_Elevator));//----X Button
+        mid.onTrue(new Mid(m_Arm, m_Elevator));//----X Button
         high.onTrue(new High(m_Arm, m_Elevator));//----Y Button
         shelf.onTrue(new Shelf(m_Arm, m_Elevator));//----Start Button
+        resetArm.onTrue(new ResetArm(m_Arm));//-----Back Button
 
         //raiseArm.onTrue(new InstantCommand(() -> m_TestArm.setGoal(0)));
         //lowerArm.onTrue(new InstantCommand(() -> m_TestArm.setGoal(-10)));

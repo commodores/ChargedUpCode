@@ -165,8 +165,9 @@ public class Swerve extends SubsystemBase {
     }
 
     public double getElevationAngle() {
-        return gyro.getPitch();
+        return gyro.getRoll();
     }
+
 
     public double chargingStraighten() {
         return gyro.getRoll();
@@ -183,5 +184,6 @@ public class Swerve extends SubsystemBase {
             SmartDashboard.putNumber("Mod " + mod.moduleNumber + " Velocity", mod.getState().speedMetersPerSecond);    
         }
         SmartDashboard.putNumber("Heading", getYaw().getDegrees());
+        SmartDashboard.putNumber("Elevation Angle", getElevationAngle());
     }
 }

@@ -40,8 +40,12 @@ public class AutoCommands {
         
         /////Charge Auto//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         List<PathPlannerTrajectory> Charge = PathPlanner.loadPathGroup("Charge", new PathConstraints(4, 3));
-        autos.put("Charge Auto", new SequentialCommandGroup(
-            getCommand(Charge)
+        autos.put("Charge", new SequentialCommandGroup(
+            new High(RobotContainer.m_Arm, RobotContainer.m_Elevator).withTimeout(2),
+            new AutoRelease(RobotContainer.m_Intake).withTimeout(0.1),
+            getCommand(Charge),
+            new AutoBalanceCommand(RobotContainer.s_Swerve),
+            new AutoLock(RobotContainer.s_Swerve)
         ));
 
          //Out of Com and Charge Auto/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -59,17 +63,17 @@ public class AutoCommands {
          //TwoPoint/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
          List<PathPlannerTrajectory> TwoPoint = PathPlanner.loadPathGroup("TwoPoint", new PathConstraints(4, 3));
          autos.put("TwoPoint", new SequentialCommandGroup(
-            new High(RobotContainer.m_Arm, RobotContainer.m_Elevator),
+            new High(RobotContainer.m_Arm, RobotContainer.m_Elevator).withTimeout(2),
             new AutoRelease(RobotContainer.m_Intake).withTimeout(0.1),
             getCommand(TwoPoint)
          ));
 
 
         //Events////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        eventMap.put("runIntake", new AutoIntake(RobotContainer.m_Intake));
+        eventMap.put("runIntake", new AutoIntake(RobotContainer.m_Intake).withTimeout(3));
         eventMap.put("release", new AutoRelease(RobotContainer.m_Intake));
         eventMap.put("stop", new AutoStop(RobotContainer.m_Intake));
-        eventMap.put("groundArm", new Ground(RobotContainer.m_Arm, RobotContainer.m_Elevator));
+        eventMap.put("groundArm", new Ground(RobotContainer.m_Arm, RobotContainer.m_Elevator).withTimeout(2));
         eventMap.put("stowArm", new Stow(RobotContainer.m_Arm, RobotContainer.m_Elevator));
         eventMap.put("highShot", new High(RobotContainer.m_Arm, RobotContainer.m_Elevator));
         eventMap.put("midShot", new Mid(RobotContainer.m_Arm, RobotContainer.m_Elevator));
@@ -89,6 +93,7 @@ public class AutoCommands {
             new PIDConstants(Constants.AutoConstants.kPThetaController, 0, 0),
             swerve::setModuleStates,
             eventMap,
+            true,
             swerve);
 
         return autoBuilder.fullAuto(pathGroup);

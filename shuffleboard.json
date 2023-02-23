@@ -211,6 +211,19 @@
               "Visuals/Show tick mark ring": true,
               "Visuals/Counter clockwise": false
             }
+          },
+          "6,2": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Elevation Angle",
+              "_title": "SmartDashboard/Elevation Angle",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
           }
         }
       }
@@ -412,9 +425,9 @@
     }
   ],
   "windowGeometry": {
-    "x": -7.199999809265137,
-    "y": -7.199999809265137,
+    "x": -10.399999618530273,
+    "y": 7.199999809265137,
     "width": 1550.4000244140625,
-    "height": 830.4000244140625
+    "height": 588.7999877929688
   }
 }

@@ -33,7 +33,7 @@ public class AutoBalanceCommand extends CommandBase {
         System.out.println(elevationAngle);
         if (elevationAngle > AutoConstants.maxPlatformPositivePitch) {
             m_Swerve.drive(new Translation2d(Constants.Swerve.balanceSpeedMod,0), 0, true, true);
-        } else if (elevationAngle < -AutoConstants.maxPlatformNegativePitch) {
+        } else if (elevationAngle < AutoConstants.maxPlatformNegativePitch) {
             m_Swerve.drive(new Translation2d(-Constants.Swerve.balanceSpeedMod,0), 0, true, true);
         } else {
             m_Swerve.drive(new Translation2d(0,0), 0, true, true);
@@ -50,6 +50,6 @@ public class AutoBalanceCommand extends CommandBase {
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        return stopCheck;
+        return false;
     }
 }
