@@ -41,6 +41,7 @@ public class AutoCommands {
         /////Charge Auto//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         List<PathPlannerTrajectory> Charge = PathPlanner.loadPathGroup("Charge", new PathConstraints(1, 1));
         autos.put("Charge", new SequentialCommandGroup(
+            new Stow(RobotContainer.m_Arm, RobotContainer.m_Elevator).withTimeout(.5),
             new Mid(RobotContainer.m_Arm, RobotContainer.m_Elevator).withTimeout(2),
             new AutoRelease(RobotContainer.m_Intake).withTimeout(1),
             getCommand(Charge),
@@ -63,10 +64,11 @@ public class AutoCommands {
          //TwoPoint/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
          List<PathPlannerTrajectory> TwoPoint = PathPlanner.loadPathGroup("TwoPoint", new PathConstraints(3, 2));
          autos.put("TwoPoint", new SequentialCommandGroup(
-            new Mid(RobotContainer.m_Arm, RobotContainer.m_Elevator).withTimeout(2),
-            new AutoRelease(RobotContainer.m_Intake).withTimeout(0.1),
+            new Stow(RobotContainer.m_Arm, RobotContainer.m_Elevator).withTimeout(.5),
+            new Mid(RobotContainer.m_Arm, RobotContainer.m_Elevator).withTimeout(3),
+            new AutoRelease(RobotContainer.m_Intake).withTimeout(1),
             getCommand(TwoPoint),
-            new AutoRelease(RobotContainer.m_Intake).withTimeout(0.5),
+            new AutoRelease(RobotContainer.m_Intake).withTimeout(0.3),
             new Stow(RobotContainer.m_Arm, RobotContainer.m_Elevator)
          ));
 

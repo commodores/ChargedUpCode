@@ -23,7 +23,7 @@ public class HighArm extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_Arm.setPosition(-33);
+    m_Arm.setPosition(-45);
   }
 
   // Called once the command ends or is interrupted.

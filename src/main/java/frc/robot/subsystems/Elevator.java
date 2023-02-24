@@ -46,7 +46,7 @@ public class Elevator extends SubsystemBase {
     elevatorMotor.setSmartCurrentLimit(30);
     elevatorMotor.setIdleMode(IdleMode.kBrake);
 
-    elevatorMotor.setSoftLimit(SoftLimitDirection.kForward, 126);
+    elevatorMotor.setSoftLimit(SoftLimitDirection.kForward, 132);
     //elevatorMotor.setSoftLimit(SoftLimitDirection.kReverse, 0);
 
     elevatorMotor.enableSoftLimit(SoftLimitDirection.kForward, true);

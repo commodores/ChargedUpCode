@@ -124,7 +124,7 @@ public class RobotContainer {
 
         intake.onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(-1)));//----Right Bumper
         intake.onFalse(new InstantCommand(() -> m_Intake.runIntakeSpeed(-.02)));
-        release.onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(.2)));//----Left Bumper
+        release.onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(.3)));//----Left Bumper
         release.onFalse(new InstantCommand(() -> m_Intake.runIntakeSpeed(-.02)));
         
         stow.onTrue(new Stow(m_Arm, m_Elevator));//----B Button
