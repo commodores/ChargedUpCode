@@ -386,9 +386,7 @@
               "_showGlyph": false,
               "Game/Game": "A2023_Charged_Up",
               "Visuals/Robot Icon Size": 50.0,
-              "Visuals/Show Outside Circles": false,
-              "Colors/Estimated Vision Position": "#FFFFFFFF",
-              "Colors/Actual Pos": "#FFFFFFFF"
+              "Visuals/Show Outside Circles": false
             }
           }
         }
