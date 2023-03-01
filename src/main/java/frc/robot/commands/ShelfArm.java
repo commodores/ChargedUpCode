@@ -23,7 +23,7 @@ public class ShelfArm extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_Arm.setPosition(-51);
+    m_Arm.setPosition(-57);//58
   }
 
   // Called once the command ends or is interrupted.

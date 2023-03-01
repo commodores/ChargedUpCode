@@ -2,13 +2,13 @@
   "waypoints": [
     {
       "anchorPoint": {
-        "x": 2.5,
-        "y": 4.75
+        "x": 1.8911232188661566,
+        "y": 0.46573318498749794
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.918411723240318,
-        "y": 4.75
+        "x": 3.0201733642903905,
+        "y": 0.5362988190765126
       },
       "holonomicAngle": 180.0,
       "isReversal": false,
@@ -24,16 +24,41 @@
     },
     {
       "anchorPoint": {
-        "x": 6.0,
-        "y": 4.75
+        "x": 2.8790420961123617,
+        "y": 0.79
       },
       "prevControl": {
-        "x": 4.227469272315591,
-        "y": 4.75
+        "x": 2.8931552229301647,
+        "y": 0.7758868731821966
       },
       "nextControl": {
-        "x": 7.772530727684409,
-        "y": 4.75
+        "x": 2.8931552229301647,
+        "y": 0.7758868731821966
+      },
+      "holonomicAngle": 180.0,
+      "isReversal": true,
+      "velOverride": null,
+      "isLocked": false,
+      "isStopPoint": false,
+      "stopEvent": {
+        "names": [],
+        "executionBehavior": "parallel",
+        "waitBehavior": "none",
+        "waitTime": 0
+      }
+    },
+    {
+      "anchorPoint": {
+        "x": 4.092771002443413,
+        "y": 0.79
+      },
+      "prevControl": {
+        "x": 3.2459833933752384,
+        "y": 0.7903351017969654
+      },
+      "nextControl": {
+        "x": 5.758179636849991,
+        "y": 0.7893409428526176
       },
       "holonomicAngle": 180.0,
       "isReversal": false,
@@ -49,15 +74,15 @@
     },
     {
       "anchorPoint": {
-        "x": 6.0,
-        "y": 3.0
+        "x": 6.1250612642070354,
+        "y": 0.7903351017969654
       },
       "prevControl": {
-        "x": 8.113048454791773,
-        "y": 3.0000000000000004
+        "x": 5.250047401503255,
+        "y": 0.776221974979162
       },
       "nextControl": null,
-      "holonomicAngle": 180.0,
+      "holonomicAngle": 0,
       "isReversal": false,
       "velOverride": null,
       "isLocked": false,
@@ -72,7 +97,7 @@
   ],
   "markers": [
     {
-      "position": 0.5963636363636233,
+      "position": 0.0,
       "names": [
         "event"
       ]

@@ -90,7 +90,7 @@ public class RobotContainer {
     
         SmartDashboard.putData("Auto Selector", autoChooser);
 
-        SmartDashboard.putData("Reset Elevator", new ResetElevator(m_Elevator));
+        SmartDashboard.putData("Reset Elevator", new ResetElevator(m_Elevator).withTimeout(.1));
 
         SmartDashboard.putData("Balance", new AutoBalance(s_Swerve));
     
@@ -111,20 +111,20 @@ public class RobotContainer {
         zeroGyro.onTrue(new InstantCommand(() -> s_Swerve.zeroGyro()));//----Y Button
         
         raiseArm.onTrue(new ManualArm(m_Arm, .3));//----Right Bumper
-        raiseArm.onFalse(new ManualArm(m_Arm, 0));
+        raiseArm.onFalse(new ManualArm(m_Arm, 0).withTimeout(0.1));
         lowerArm.onTrue(new ManualArm(m_Arm, -.3));//----Left Bumper
-        lowerArm.onFalse(new ManualArm(m_Arm, 0));
+        lowerArm.onFalse(new ManualArm(m_Arm, 0).withTimeout(0.1));
 
-        raiseElevator.onTrue(new ManualElevator(m_Elevator, .5));//----Start Button
-        raiseElevator.onFalse(new ManualElevator(m_Elevator, 0));
-        lowerElevator.onTrue(new ManualElevator(m_Elevator, -.5));//----Back Button
-        lowerElevator.onFalse(new ManualElevator(m_Elevator, 0));
+        raiseElevator.onTrue(new ManualElevator(m_Elevator, .3));//----Start Button
+        raiseElevator.onFalse(new ManualElevator(m_Elevator, 0).withTimeout(0.1));
+        lowerElevator.onTrue(new ManualElevator(m_Elevator, -.3));//----Back Button
+        lowerElevator.onFalse(new ManualElevator(m_Elevator, 0).withTimeout(0.1));
         
         /* Driver 2 Buttons */        
 
         intake.onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(-1)));//----Right Bumper
         intake.onFalse(new InstantCommand(() -> m_Intake.runIntakeSpeed(-.02)));
-        release.onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(.3)));//----Left Bumper
+        release.onTrue(new InstantCommand(() -> m_Intake.runIntakeSpeed(.35)));//----Left Bumper
         release.onFalse(new InstantCommand(() -> m_Intake.runIntakeSpeed(-.02)));
         
         stow.onTrue(new Stow(m_Arm, m_Elevator));//----B Button

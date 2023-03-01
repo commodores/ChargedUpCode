@@ -23,7 +23,7 @@ public class GroundArm extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_Arm.setPosition(-62);//-59.4
+    m_Arm.setPosition(-78);  //79
   }
 
   // Called once the command ends or is interrupted.
