@@ -69,7 +69,7 @@ public class AutoCommands {
             new Stow(RobotContainer.m_Arm, RobotContainer.m_Elevator).withTimeout(.5),
             getCommand(TwoPoint),
             new Mid(RobotContainer.m_Arm, RobotContainer.m_Elevator).withTimeout(3.5),
-            new AutoRelease(RobotContainer.m_Intake).withTimeout(0.75),
+            new AutoRelease(RobotContainer.m_Intake).withTimeout(1),
             new Stow(RobotContainer.m_Arm, RobotContainer.m_Elevator).withTimeout(2.0)
          ));
 
@@ -93,7 +93,7 @@ public class AutoCommands {
              new AutoLock(RobotContainer.s_Swerve)
          ));
 
-         List<PathPlannerTrajectory> OnePointCharge = PathPlanner.loadPathGroup("OnePointCharge", new PathConstraints(3, 2));
+         List<PathPlannerTrajectory> OnePointCharge = PathPlanner.loadPathGroup("OnePointCharge", new PathConstraints(1.50, 1.50));
          autos.put("OnePointCharge", new SequentialCommandGroup(
             new Stow(RobotContainer.m_Arm, RobotContainer.m_Elevator).withTimeout(.5),
             new Mid(RobotContainer.m_Arm, RobotContainer.m_Elevator).withTimeout(3),

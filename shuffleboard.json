@@ -49,6 +49,19 @@
               "_glyph": 148,
               "_showGlyph": false
             }
+          },
+          "3,1": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Command",
+              "_source0": "network_table:///SmartDashboard/Reset Elevator",
+              "_title": "/SmartDashboard/Reset Elevator",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
           }
         }
       }
@@ -386,7 +399,9 @@
               "_showGlyph": false,
               "Game/Game": "A2023_Charged_Up",
               "Visuals/Robot Icon Size": 50.0,
-              "Visuals/Show Outside Circles": false
+              "Visuals/Show Outside Circles": false,
+              "Colors/Estimated Vision Position": "#FFFFFFFF",
+              "Colors/Actual Pos": "#FFFFFFFF"
             }
           }
         }
