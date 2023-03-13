@@ -7,10 +7,10 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Intake;
 
-public class AutoRelease extends CommandBase {
+public class AutoFastRelease extends CommandBase {
   /** Creates a new AutoRelease. */
   private final Intake m_Intake;
-  public AutoRelease(Intake subsystem) {
+  public AutoFastRelease(Intake subsystem) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_Intake = subsystem;
     addRequirements(m_Intake);
@@ -23,7 +23,7 @@ public class AutoRelease extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_Intake.runIntakeSpeed(0.5);
+    m_Intake.runIntakeSpeed(1);//0.5
   }
 
   // Called once the command ends or is interrupted.

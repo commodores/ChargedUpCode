@@ -135,7 +135,7 @@
         "x": 5.125505600511914,
         "y": 2.83599357498287
       },
-      "holonomicAngle": 0.0,
+      "holonomicAngle": 180.0,
       "isReversal": false,
       "velOverride": null,
       "isLocked": false,
@@ -149,15 +149,15 @@
     },
     {
       "anchorPoint": {
-        "x": 3.4101869059658236,
-        "y": 2.790251743128307
+        "x": 3.8904761404387282,
+        "y": 2.7788162851646674
       },
       "prevControl": {
-        "x": 4.359329916947995,
-        "y": 2.7788162851646656
+        "x": 4.932909975089613,
+        "y": 2.8253535099258684
       },
       "nextControl": null,
-      "holonomicAngle": 0.0,
+      "holonomicAngle": 180.0,
       "isReversal": false,
       "velOverride": null,
       "isLocked": false,
@@ -172,27 +172,15 @@
   ],
   "markers": [
     {
-      "position": 1.15,
+      "position": 6.0,
       "names": [
-        "runIntake"
+        "event"
       ]
     },
     {
-      "position": 0.0,
+      "position": 6.0,
       "names": [
-        "groundArm"
-      ]
-    },
-    {
-      "position": 3.599999999999911,
-      "names": [
-        "stowArm"
-      ]
-    },
-    {
-      "position": 5.0,
-      "names": [
-        "stopIntake"
+        "fastRelease"
       ]
     }
   ]

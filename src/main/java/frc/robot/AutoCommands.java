@@ -86,6 +86,7 @@ public class AutoCommands {
             
          ));
 
+         //Auto Balance Test/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
          List<PathPlannerTrajectory> AutoBalanceTest = PathPlanner.loadPathGroup("AutoBalanceTest", new PathConstraints(1, 1));
          autos.put("AutoBalanceTest", new SequentialCommandGroup(
              getCommand(AutoBalanceTest),
@@ -93,6 +94,7 @@ public class AutoCommands {
              new AutoLock(RobotContainer.s_Swerve)
          ));
 
+         //One Point Charge/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
          List<PathPlannerTrajectory> OnePointCharge = PathPlanner.loadPathGroup("OnePointCharge", new PathConstraints(1.50, 1.50));
          autos.put("OnePointCharge", new SequentialCommandGroup(
             new Stow(RobotContainer.m_Arm, RobotContainer.m_Elevator).withTimeout(.5),
@@ -100,6 +102,18 @@ public class AutoCommands {
             new AutoRelease(RobotContainer.m_Intake).withTimeout(1),
             new Stow(RobotContainer.m_Arm, RobotContainer.m_Elevator).withTimeout(.5),
             getCommand(OnePointCharge),
+            new AutoBalanceCommand(RobotContainer.s_Swerve)
+            //new AutoLock(RobotContainer.s_Swerve)
+         ));
+
+         //TrickShot/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+         List<PathPlannerTrajectory> TrickShot = PathPlanner.loadPathGroup("TrickShot", new PathConstraints(1.50, 1.50));
+         autos.put("TrickShot", new SequentialCommandGroup(
+            new Stow(RobotContainer.m_Arm, RobotContainer.m_Elevator).withTimeout(.5),
+            new Mid(RobotContainer.m_Arm, RobotContainer.m_Elevator).withTimeout(3),
+            new AutoRelease(RobotContainer.m_Intake).withTimeout(1),
+            new Stow(RobotContainer.m_Arm, RobotContainer.m_Elevator).withTimeout(.5),
+            getCommand(TrickShot),
             new AutoBalanceCommand(RobotContainer.s_Swerve),
             new AutoLock(RobotContainer.s_Swerve)
          ));
@@ -114,6 +128,7 @@ public class AutoCommands {
         eventMap.put("stowArm", new Stow(RobotContainer.m_Arm, RobotContainer.m_Elevator));
         eventMap.put("highShot", new High(RobotContainer.m_Arm, RobotContainer.m_Elevator));
         eventMap.put("midShot", new Mid(RobotContainer.m_Arm, RobotContainer.m_Elevator)); 
+        eventMap.put("fastRelease", new AutoFastRelease(RobotContainer.m_Intake)); 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
